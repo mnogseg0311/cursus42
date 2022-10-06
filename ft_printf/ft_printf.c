@@ -15,53 +15,54 @@
 void	oneprint(va_list ap, char s)
 {
 	if (s == 'c')
-		printchar(ap);
-	if (s == 's')
-		printstr(ap);
-	if (s == 'p')
-		printvoidp(ap);
-	if (s == 'd')
-		prindecimal(ap);
-	if (s == 'i')
-		printint(ap);
-	if (s == 'u')
-		printudecimal(ap);
-	if (s == 'x')
-		printhexalow(ap);
-	if (s == 'X')
-		printhexaupp(ap);
-	if (s == '%')
+		printchar(va_arg(ap, ));
+	else if (s == 's')
+		printstr(va_arg(ap, ));
+	else if (s == 'p')
+		printvoidp(va_arg(ap, ));
+	else if (s == 'd')
+		prindecimal(va_arg(ap, ));
+	else if (s == 'i')
+		printint(va_arg(ap, ));
+	else if (s == 'u')
+		printudecimal(va_arg(ap, ));
+	else if (s == 'x')
+		printhexalow(va_arg(ap, ));
+	else if (s == 'X')
+		printhexaupp(va_arg(ap, ));
+	else if (s == '%')
 		write(1, "%", 1);
-}
-
-int	checkprint(const char *str, int *j, va_list ap)
-{
-	if (str[*j] != '%')
-	{
-		write(1, &str[*j], 1);
-		return (1);
-	}
-	*j++;
-	if (!ft_strtrim(&str[*j], "csppdiuxX%"))
-		return (-1);
-	oneprint(ap, str[*j]);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		i;
-	int		j;
+	int		len;
 
 	i = 0;
-	j = 0;
+	len = 0;
 	va_start(ap, str);
-	while (str[j] != '\0' && checkprint(str, &j, ap))		//ha de sumar a la j
+	while (str[i] != '\0')
 	{
-		if (j < 0)
-			return (-1);
+		if (str[i] == '%')
+		{
+			i++;
+			oneprint(ap, str[i]);
+			len++;
+		}
+		else
+		{
+			write(1, &str[i], 1);
+			len++;
+		}
 		i++;
 	}
 	va_end(ap);
 	return (i);
+}
+
+int main()
+{
+	ft_printf("% ");
 }
