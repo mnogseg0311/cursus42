@@ -6,7 +6,7 @@
 #    By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:53:19 by mnoguera          #+#    #+#              #
-#    Updated: 2022/09/30 15:21:02 by mnoguera         ###   ########.fr        #
+#    Updated: 2022/10/06 15:51:37 by mnoguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ OBJS = $(SRCS:.c=.o)
 BONUSOBJS = $(BONUSSRC:.c=.o)
 HEADER = libft.h
 
-%.o : %.c
+%.o : %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
