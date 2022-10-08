@@ -14,11 +14,6 @@
 
 void	oneprint(va_list ap, char s, int i)
 {
-	if (str[i] == '\\')
-	{
-		printescseq(s, i);
-		return ;
-	}
 	if (s == 'c')
 		ft_putchar_fd(va_arg(ap, int), 1);
 	else if (s == 's')
