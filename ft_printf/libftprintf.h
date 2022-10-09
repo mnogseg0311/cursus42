@@ -17,5 +17,10 @@
 # include "libft/libft.h"
 
 int	ft_printf(const char *str, ...);
+void	ft_putvoidptr(unsigned long p);
+void	ft_putdecimal(int n);
+void	ft_putunsigdecimal(unsigned int n);
+void	ft_puthexalow(unsigned int i);
+void	ft_puthexaupp(unsigned int i);
 
 #endif

@@ -19,17 +19,17 @@ void	oneprint(va_list ap, char s, int i)
 	else if (s == 's')
 		ft_putstr_fd(va_arg(ap, char *), 1);
 	else if (s == 'p')
-		printvoidp(va_arg(ap, unsigned long));
+		ft_putvoidptr(va_arg(ap, unsigned long));
 	else if (s == 'd')
-		prindecimal(va_arg(ap, int));
+		ft_putdecimal(va_arg(ap, int));
 	else if (s == 'i')
 		ft_putnbr_fd(va_arg(ap, int), 1);
 	else if (s == 'u')
-		printudecimal(va_arg(ap, unsigned int));
+		ft_putunsigdecimal(va_arg(ap, unsigned int));
 	else if (s == 'x')
-		printhexalow(va_arg(ap, unsigned int));
+		ft_puthexalow(va_arg(ap, unsigned int));
 	else if (s == 'X')
-		printhexaupp(va_arg(ap, unsigned int));
+		ft_puthexaupp(va_arg(ap, unsigned int));
 	else if (s == '%')
 		write(1, "%", 1);
 }
@@ -65,5 +65,6 @@ int	ft_printf(const char *str, ...)
 #include <stdio.h>
 int main()
 {
-	ft_printf("% ");
+	ft_printf("%d hola %u", 7, 25);
+	printf("\n");
 }

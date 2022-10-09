@@ -1,7 +1,8 @@
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 void	ft_putvoidptr(unsigned long p)
 {
-	printf("%p", p),
+	printf("%ld", p);
 }
