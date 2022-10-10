@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:02:19 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/09/19 19:22:31 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:56:41 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,3 @@ size_t	ft_strlen(const char *s)
 		n++;
 	return (n);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	printf("%zu", ft_strlen("hello"));
-}
-*/

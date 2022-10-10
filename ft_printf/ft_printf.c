@@ -6,13 +6,13 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:02:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/07 15:43:53 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:42:19 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	oneprint(va_list ap, char s, int i)
+static void	oneprint(va_list ap, char s)
 {
 	if (s == 'c')
 		ft_putchar_fd(va_arg(ap, int), 1);
@@ -48,7 +48,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			oneprint(ap, str[i], i);
+			oneprint(ap, str[i]);
 			len++;
 		}
 		else
