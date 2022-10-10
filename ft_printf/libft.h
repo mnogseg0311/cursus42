@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/**************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include <stdarg.h>
 # include <unistd.h>
-# include "libft/libft.h"
 
 int		ft_printf(const char *str, ...);
 void	ft_putchar(int c);

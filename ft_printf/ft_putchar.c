@@ -14,5 +14,5 @@
 
 void	ft_putchar(int c)
 {
-	pritnf("%c", &c);
+	printf("%c", c);
 }

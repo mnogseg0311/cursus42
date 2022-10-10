@@ -14,5 +14,5 @@
 
 void	ft_putnbr(int n)
 {
-	printf("%i", &i);
+	printf("%i", n);
 }

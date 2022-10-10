@@ -9,7 +9,7 @@
 /*   Updated: 2022/10/10 17:43:51 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 #include "libft.h"
 
 static void	oneprint(va_list ap, char s)
@@ -62,10 +62,11 @@ int	ft_printf(const char *str, ...)
 	return (i);
 }
 
-#include <stdio.h>
 int main()
 {
-	ft_printf("%d hola %u", 7, 25);
+	int	i;
+
+	i = ft_printf("%d hola %u", 7, 25);
 	printf("\n");
 }
 

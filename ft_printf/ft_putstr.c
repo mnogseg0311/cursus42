@@ -14,5 +14,5 @@
 
 void	ft_putstr(char *s)
 {
-	print("%s", s);
+	printf("%s", s);
 }
