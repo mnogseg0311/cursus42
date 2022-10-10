@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexaupp.c                                    :+:      :+:    :+:   */
+/*   ft_putst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 17:03:20 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 17:03:27 by mnoguera         ###   ########.fr       */
+/*   Created: 2022/10/10 17:33:08 by mnoguera          #+#    #+#             */
+/*   Updated: 2022/10/10 17:34:37 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 
-void	ft_puthexaupp(unsigned int i)
+void	ft_putstr(char *s)
 {
-	printf("%X", i);
+	print("%s", s);
 }

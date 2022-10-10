@@ -1,4 +1,14 @@
-#include "libftprintf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putunsigdecimal.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 17:03:45 by mnoguera          #+#    #+#             */
+/*   Updated: 2022/10/10 17:03:48 by mnoguera         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <stdio.h>
 
 void	ft_putunsigdecimal(unsigned int n)

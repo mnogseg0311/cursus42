@@ -6,24 +6,24 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:02:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 16:42:19 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:43:51 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
 static void	oneprint(va_list ap, char s)
 {
 	if (s == 'c')
-		ft_putchar_fd(va_arg(ap, int), 1);
+		ft_putchar(va_arg(ap, int));
 	else if (s == 's')
-		ft_putstr_fd(va_arg(ap, char *), 1);
+		ft_putstr(va_arg(ap, char *));
 	else if (s == 'p')
 		ft_putvoidptr(va_arg(ap, unsigned long));
 	else if (s == 'd')
 		ft_putdecimal(va_arg(ap, int));
 	else if (s == 'i')
-		ft_putnbr_fd(va_arg(ap, int), 1);
+		ft_putnbr(va_arg(ap, int));
 	else if (s == 'u')
 		ft_putunsigdecimal(va_arg(ap, unsigned int));
 	else if (s == 'x')
@@ -68,3 +68,4 @@ int main()
 	ft_printf("%d hola %u", 7, 25);
 	printf("\n");
 }
+

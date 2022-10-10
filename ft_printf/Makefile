@@ -6,20 +6,22 @@
 #    By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 19:36:15 by mnoguera          #+#    #+#              #
-#    Updated: 2022/10/06 15:55:12 by mnoguera         ###   ########.fr        #
+#    Updated: 2022/10/10 17:24:57 by mnoguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 NAME = libft.a
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_putdecimal.c ft_puthexaupp.c ft_putvoidptr.c ft_puthexalow.c ft_putunsigdecimal.c
 
 OBJS = $(SRCS:.c=.c)
-HEADER = libftprintf.h
+HEADER = libft.h
 
 %.o : %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
+
+all: $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	make -C ./libft
