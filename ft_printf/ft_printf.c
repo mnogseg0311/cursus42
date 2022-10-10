@@ -49,13 +49,10 @@ int	ft_printf(const char *str, ...)
 		{
 			i++;
 			oneprint(ap, str[i]);
-			len++;
 		}
 		else
-		{
 			write(1, &str[i], 1);
-			len++;
-		}
+		len++;
 		i++;
 	}
 	va_end(ap);
