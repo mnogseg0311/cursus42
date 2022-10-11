@@ -6,13 +6,12 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:28:34 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 17:29:40 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:26:03 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
+#include "libft.h"
 
 void	ft_putchar(int c)
 {
-	printf("%c", c);
+	write(1, &c, 1);
 }

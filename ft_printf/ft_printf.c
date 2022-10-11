@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:02:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 17:43:51 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:36:06 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -61,9 +61,7 @@ int	ft_printf(const char *str, ...)
 
 int main()
 {
-	int	i;
-
-	i = ft_printf("%d hola %u", 7, 25);
-	printf("\n");
+	ft_printf("%X hola\n", 4342);
+	printf("\n%X\n", 4342);
 }
 

@@ -6,13 +6,17 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:33:08 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 17:34:37 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:52:02 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 void	ft_putstr(char *s)
 {
-	printf("%s", s);
+	int	i;
+
+	i = 0;
+	while (s[i++] != '\0')
+		ft_putchar(s[i - 1]);
 }
