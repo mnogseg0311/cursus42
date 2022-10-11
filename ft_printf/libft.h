@@ -16,14 +16,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int		ft_printf(const char *str, ...);
-void	ft_putchar(int c);
-void	ft_putstr(char *s);
-void	ft_putnbr(int i);
-void	ft_putvoidptr(unsigned long p);
-void	ft_putdecimal(int n);
-void	ft_putunsigdecimal(unsigned int n);
-void	ft_puthexalow(unsigned int i);
-void	ft_puthexaupp(unsigned int i);
+int	ft_printf(const char *str, ...);
+int	ft_putchar(int c);
+int	ft_putstr(char *s);
+int	ft_putnbr(int i);
+int	ft_putvoidptr(unsigned long p);
+int	ft_putunsigdecimal(unsigned int n);
+int	ft_puthexalow(unsigned int i);
+int	ft_puthexaupp(unsigned int i);
 
 #endif

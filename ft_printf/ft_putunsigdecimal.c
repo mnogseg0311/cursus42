@@ -11,7 +11,23 @@
 /* ************************************************************************** */
 #include <stdio.h>
 
-void	ft_putunsigdecimal(unsigned int n)
+static char*	ft_utoa(unsigned int n)
 {
-	printf("%u", n);
+}
+
+int	ft_putunsigdecimal(unsigned int n)
+{
+	int		aux;
+	char	*nb;
+
+	aux = 0;
+	if (n == 0)
+		aux = write(1, "0", 1);
+	else
+	{
+		nb = ft_utoa(n);
+		aux += ft_putstr(nb);
+		free(nb);
+	}
+	return (aux);
 }

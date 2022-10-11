@@ -12,26 +12,27 @@
 #include <stdio.h>
 #include "libft.h"
 
-static void	oneprint(va_list ap, char s)
+static int	oneprint(va_list ap, char s)
 {
+	int	aux;
+
 	if (s == 'c')
-		ft_putchar(va_arg(ap, int));
+		aux = ft_putchar(va_arg(ap, int));
 	else if (s == 's')
-		ft_putstr(va_arg(ap, char *));
+		aux = ft_putstr(va_arg(ap, char *));
 	else if (s == 'p')
-		ft_putvoidptr(va_arg(ap, unsigned long));
-	else if (s == 'd')
-		ft_putdecimal(va_arg(ap, int));
-	else if (s == 'i')
-		ft_putnbr(va_arg(ap, int));
+		aux = ft_putvoidptr(va_arg(ap, unsigned long));
+	else if (s == 'd' || s == 'i')
+		aux = ft_putnbr(va_arg(ap, int));
 	else if (s == 'u')
-		ft_putunsigdecimal(va_arg(ap, unsigned int));
+		aux = ft_putunsigdecimal(va_arg(ap, unsigned int));
 	else if (s == 'x')
-		ft_puthexalow(va_arg(ap, unsigned int));
+		aux = ft_puthexalow(va_arg(ap, unsigned int));
 	else if (s == 'X')
-		ft_puthexaupp(va_arg(ap, unsigned int));
+		aux = ft_puthexaupp(va_arg(ap, unsigned int));
 	else if (s == '%')
-		write(1, "%", 1);
+		aux = write(1, "%", 1);
+	return (aux);
 }
 
 int	ft_printf(const char *str, ...)
@@ -48,15 +49,14 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			oneprint(ap, str[i]);
+			len += oneprint(ap, str[i]);
 		}
 		else
-			write(1, &str[i], 1);
-		len++;
+			len += write(1, &str[i], 1);
 		i++;
 	}
 	va_end(ap);
-	return (i);
+	return (len);
 }
 
 int main()

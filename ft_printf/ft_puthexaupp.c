@@ -32,20 +32,22 @@ static void	hexabaseupp(char *base)
 	base [i] = '\0';
 }
 
-static void	ft_changebase(unsigned int i, char *base)
+static void	ft_changebase(unsigned int i, char *base, int *aux)
 {
 	if (i > 15)
 		ft_changebase(i / 16, base);
-	write(1, &base[i % 16], 1);
+	*aux += write(1, &base[i % 16], 1);
 }
 
-void	ft_puthexaupp(unsigned int i)
+int	ft_puthexaupp(unsigned int i)
 {
-	char *base;
+	char	*base;
+	int	aux;
 
 	base = malloc(sizeof(char) * 17);	
 	if (!base)
 		return ;
 	hexabaseupp(base);
-	ft_changebase(i, base);
+	ft_changebase(i, base, &aux);
+	return (aux);
 }

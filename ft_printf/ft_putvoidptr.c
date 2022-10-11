@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include <stdio.h>
 
-void	ft_putvoidptr(unsigned long p)
+int	ft_putvoidptr(unsigned long p)
 {
-	printf("%ld", p);
+	return (printf("%ld", p));
 }

@@ -11,24 +11,29 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static void ft_putnum(int n)
+static void ft_putnum(int n, int *aux)
 {
 	if (n > 9)
 		ft_putnum(n / 10);
-	ft_putchar(n % 10 + 48);
+	*aux += ft_putchar(n % 10 + 48);
 }
 
-void	ft_putnbr(int n)
+int	ft_putnbr(int n)
 {
+	int	aux;
+
+	aux = 0;
 	if (n == -2147483648)
-		write(1, "-2147483648", 1);
+		aux = write(1, "-2147483648", 1);
 	else
 	{
 		if (n < 0)
 		{
 			write(1, "-", 1);
 			n = -n;
+			aux++;
 		}
-		ft_putnum(n);
+		ft_putnum(n, &aux);
 	}
+	return (aux);
 }
