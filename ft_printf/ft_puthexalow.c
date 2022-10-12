@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:02:19 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/11 16:27:34 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:31:16 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,7 +35,7 @@ static void	hexabaselow(char *base)
 static void	ft_changebase(unsigned int i, char *base, int *aux)
 {
 	if (i > 15)
-		ft_changebase(i / 16, base);
+		ft_changebase(i / 16, base, aux);
 	*aux += write(1, &base[i % 16], 1);
 }
 

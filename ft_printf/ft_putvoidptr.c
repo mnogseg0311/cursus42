@@ -6,12 +6,15 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:04:02 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 17:04:09 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:57:35 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_putvoidptr(unsigned long p)
 {
-	return (printf("%ld", p));
+	int	count;
+
+	count = ft_putstr("0x");
+
 }

@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:02:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/11 16:36:06 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:43:56 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -16,6 +16,7 @@ static int	oneprint(va_list ap, char s)
 {
 	int	aux;
 
+	aux = 0;
 	if (s == 'c')
 		aux = ft_putchar(va_arg(ap, int));
 	else if (s == 's')
@@ -61,7 +62,7 @@ int	ft_printf(const char *str, ...)
 
 int main()
 {
-	ft_printf("%X hola\n", 4342);
-	printf("\n%X\n", 4342);
+	ft_printf("%d hola\n", 43/42);
+	printf("%i\n", 43/42);
 }
 
