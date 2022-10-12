@@ -65,4 +65,3 @@ int main()
 	ft_printf("%d hola\n", 43/42);
 	printf("%i\n", 43/42);
 }
-
