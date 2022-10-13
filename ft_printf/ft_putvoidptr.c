@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:04:02 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:12:49 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:39:12 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -26,8 +26,6 @@ int	ft_putvoidptr(unsigned long p)
 
 	base = "0123456789abcdef";
 	count = ft_putstr("0x");
-	if (p == 0)
-		return (count + write(1, "0", 1));
 	aux = 0;
 	ft_putptr(p, &aux, base);
 	count += aux;
