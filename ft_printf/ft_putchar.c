@@ -6,12 +6,17 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:28:34 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:09:53 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:26:59 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+int	ft_putchar(int c, int len)
 {
-	return (write(1, &c, 1));
+	int	aux;
+
+	aux = write(1, &c, 1);
+	if (aux < 0)
+		return (aux);
+	return (aux + len);
 }

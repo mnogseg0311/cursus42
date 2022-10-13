@@ -6,23 +6,26 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:33:08 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 19:11:01 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:37:41 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_putstr(char *s, int len)
 {
-	size_t	i;
+	int		aux;
 
+	aux = 0;
 	if (!s)
-		return (write(1, "(null)", 6));
-	i = 0;
-	while (s[i] != '\0')
 	{
-		ft_putchar(s[i]);
-		i++;
+		aux = write(1, "(null)", 6);
+		if (aux < 0)
+			return (aux);
+		return (aux + len);
 	}
-	return (i);
+	aux = write(1, s, ft_strlen(s));
+	if (aux < 0)
+		return (aux);
+	return (aux + len);
 }

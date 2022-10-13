@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:03:45 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:13:47 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:33:27 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -46,7 +46,7 @@ static char	*ft_utoa(unsigned int n, int len)
 	return (num);
 }
 
-int	ft_putunsigdecimal(unsigned int n)
+int	ft_putunsigdecimal(unsigned int n, int len)
 {
 	int		aux;
 	char	*nb;
@@ -57,8 +57,10 @@ int	ft_putunsigdecimal(unsigned int n)
 	else
 	{
 		nb = ft_utoa(n, unsignedlen(n));
-		aux += ft_putstr(nb);
+		aux = ft_putstr(nb, len);
 		free(nb);
 	}
-	return (aux);
+	if (aux < 0)
+		return (aux);
+	return (aux + len);
 }
