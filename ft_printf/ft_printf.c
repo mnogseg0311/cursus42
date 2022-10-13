@@ -6,11 +6,10 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:02:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/12 15:43:56 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:11:32 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	oneprint(va_list ap, char s)
 {
@@ -59,9 +58,10 @@ int	ft_printf(const char *str, ...)
 	va_end(ap);
 	return (len);
 }
-
+/*
 int main()
 {
 	ft_printf("%d hola\n", 43/42);
 	printf("%i\n", 43/42);
 }
+*/

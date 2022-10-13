@@ -6,10 +6,10 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:28:34 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/11 14:26:03 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:09:53 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_putchar(int c)
 {

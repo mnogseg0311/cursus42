@@ -6,12 +6,12 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:35:33 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/12 15:39:04 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:13:30 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-static void ft_putnum(int n, int *aux)
+static void	ft_putnum(int n, int *aux)
 {
 	if (n > 9)
 		ft_putnum(n / 10, aux);

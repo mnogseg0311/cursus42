@@ -6,10 +6,10 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:03:45 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/12 15:40:28 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:13:47 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	unsignedlen(unsigned int n)
 {
@@ -26,7 +26,7 @@ static int	unsignedlen(unsigned int n)
 	return (aux);
 }
 
-static char*	ft_utoa(unsigned int n, int len)
+static char	*ft_utoa(unsigned int n, int len)
 {
 	int		aux;
 	char	*num;

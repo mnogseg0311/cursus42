@@ -6,10 +6,10 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:28:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/12 15:37:25 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:11:12 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 static void	hexabaseupp(char *base)
 {
@@ -42,9 +42,9 @@ static void	ft_changebase(unsigned int i, char *base, int *aux)
 int	ft_puthexaupp(unsigned int i)
 {
 	char	*base;
-	int	aux;
+	int		aux;
 
-	base = malloc(sizeof(char) * 17);	
+	base = malloc(sizeof(char) * 17);
 	if (!base)
 		return (0);
 	hexabaseupp(base);
