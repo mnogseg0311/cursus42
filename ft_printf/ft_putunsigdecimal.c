@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:03:45 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 20:33:27 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:11:37 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -53,14 +53,16 @@ int	ft_putunsigdecimal(unsigned int n, int len)
 
 	aux = 0;
 	if (n == 0)
+	{
 		aux = write(1, "0", 1);
+		if (aux < 0)
+			return (aux);
+	}
 	else
 	{
 		nb = ft_utoa(n, unsignedlen(n));
 		aux = ft_putstr(nb, len);
 		free(nb);
 	}
-	if (aux < 0)
-		return (aux);
-	return (aux + len);
+	return (aux);
 }
