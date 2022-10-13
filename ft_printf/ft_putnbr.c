@@ -48,3 +48,9 @@ int	ft_putnbr(int n, int len)
 	}
 	return (aux);
 }
+
+#include <stdio.h>
+int	main()
+{
+	printf("%i\n%i\n", printf("%i", -214748364), ft_putnbr(-214748364, 0));
+}
