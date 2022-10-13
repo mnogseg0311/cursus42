@@ -6,7 +6,7 @@
 #    By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 19:36:15 by mnoguera          #+#    #+#              #
-#    Updated: 2022/10/13 16:05:21 by mnoguera         ###   ########.fr        #
+#    Updated: 2022/10/13 16:15:23 by mnoguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS	= ft_printf.c\
 	ft_putvoidptr.c\
 	ft_puthexalow.c\
 	ft_putunsigdecimal.c\
-	ft_strlen.c
+	ft_strlen.c\
 
 OBJS = $(SRCS:.c=.o)
 HEADER = ft_printf.h

@@ -6,11 +6,11 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:02:19 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/10 16:56:41 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:26:29 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {
