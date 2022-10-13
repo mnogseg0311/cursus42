@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:28:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:31:21 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:38:04 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -23,6 +23,7 @@ int	ft_puthexaupp(unsigned int i)
 	char	*base;
 	int		aux;
 
+	aux = 0;
 	base = "0123456789ABCDEF";
 	ft_changebase(i, base, &aux);
 	return (aux);

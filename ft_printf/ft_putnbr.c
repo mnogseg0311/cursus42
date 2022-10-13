@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:35:33 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:13:30 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:36:15 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -24,7 +24,7 @@ int	ft_putnbr(int n)
 
 	aux = 0;
 	if (n == -2147483648)
-		aux = write(1, "-2147483648", 1);
+		aux = write(1, "-2147483648", 11);
 	else
 	{
 		if (n < 0)
