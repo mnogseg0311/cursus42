@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:33:08 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:43:59 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:11:01 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int	ft_putstr(char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (write(1, "(null)", 6));
 	i = 0;
-	while (i < ft_strlen(s))
+	while (s[i] != '\0')
 	{
 		ft_putchar(s[i]);
 		i++;
 	}
-	return (ft_strlen(s));
+	return (i);
 }
