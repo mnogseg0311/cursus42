@@ -6,31 +6,10 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:02:19 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 16:10:48 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:30:38 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-
-static void	hexabaselow(char *base)
-{
-	int		i;
-	char	j;
-
-	i = 0;
-	while (i <= 9)
-	{
-		base[i] = i + 48;
-		i++;
-	}
-	j = 'a';
-	while (i < 16)
-	{
-		base[i] = j;
-		i++;
-		j++;
-	}
-	base [i] = '\0';
-}
 
 static void	ft_changebase(unsigned int i, char *base, int *aux)
 {
@@ -45,10 +24,7 @@ int	ft_puthexalow(unsigned int i)
 	int		aux;
 
 	aux = 0;
-	base = malloc(sizeof(char) * 17);
-	if (!base)
-		return (0);
-	hexabaselow(base);
+	base = "0123456789abcdef";
 	ft_changebase(i, base, &aux);
 	return (aux);
 }
