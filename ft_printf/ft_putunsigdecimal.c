@@ -1,66 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigdecimal.c                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 17:03:45 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/13 21:11:37 by mnoguera         ###   ########.fr       */
+/*   Created: 2022/10/10 17:35:33 by mnoguera          #+#    #+#             */
+/*   Updated: 2022/10/14 19:37:16 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include <stdio.h>
 
-static int	unsignedlen(unsigned int n)
+static void	ft_putnum(unsigned int n, int *aux, int len)
 {
-	int	aux;
+	int	i;
+	int	j;
 
-	aux = 0;
-	if (n == 0)
-		aux++;
-	while (n != 0)
+	i = 0;
+	j = 0;
+	if (n > 9)
+		ft_putnum(n / 10, aux, len);
+	if (*aux != -1)
 	{
-		n = n / 10;
-		aux++;
+		i = n % 10 + 48;
+		j += write(1, &i, 1);
+		if (j < 0)
+			*aux = -1;
+		else
+			*aux += j;
 	}
-	return (aux);
-}
-
-static char	*ft_utoa(unsigned int n, int len)
-{
-	char	*num;
-
-	num = malloc(sizeof(char) * (len + 1));
-	if (!num)
-		return (NULL);
-	num[len] = '\0';
-	len--;
-	while (len >= 0)
-	{
-		num[len] = n % 10 + 48;
-		n = n / 10;
-		len--;
-	}
-	return (num);
 }
 
 int	ft_putunsigdecimal(unsigned int n, int len)
 {
-	int		aux;
-	char	*nb;
+	int	aux;
 
 	aux = 0;
-	if (n == 0)
-	{
-		aux = write(1, "0", 1);
-		if (aux < 0)
-			return (aux);
-	}
-	else
-	{
-		nb = ft_utoa(n, unsignedlen(n));
-		aux = ft_putstr(nb, len);
-		free(nb);
-	}
-	return (aux);
+	ft_putnum(n, &aux, len);
+	if (aux < 0)
+		return (aux);
+	return (aux + len);
 }
