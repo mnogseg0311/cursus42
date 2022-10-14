@@ -28,7 +28,6 @@ static int	unsignedlen(unsigned int n)
 
 static char	*ft_utoa(unsigned int n, int len)
 {
-	int		aux;
 	char	*num;
 
 	num = malloc(sizeof(char) * (len + 1));
@@ -36,7 +35,6 @@ static char	*ft_utoa(unsigned int n, int len)
 		return (NULL);
 	num[len] = '\0';
 	len--;
-	aux = 0;
 	while (len >= 0)
 	{
 		num[len] = n % 10 + 48;

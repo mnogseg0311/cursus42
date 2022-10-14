@@ -28,9 +28,7 @@ static void	ft_putnum(int n, int *aux, int len)
 int	ft_putnbr(int n, int len)
 {
 	int	aux;
-	int	j;
 
-	j = 0;
 	aux = 0;
 	if (n == -2147483648)
 		aux = write(1, "-2147483648", 11);
@@ -41,7 +39,6 @@ int	ft_putnbr(int n, int len)
 			aux = write(1, "-", 1);
 			if (aux < 0)
 				return (aux);
-			j = 1;
 			n = -n;
 		}
 		ft_putnum(n, &aux, len);
@@ -52,5 +49,6 @@ int	ft_putnbr(int n, int len)
 #include <stdio.h>
 int	main()
 {
-	printf("%i\n%i\n", printf("%i", -214748364), ft_putnbr(-214748364, 0));
+	printf("%i\n%i\n", printf("%d", -210987), ft_putnbr(-210987, 0));
 }
+
