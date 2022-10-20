@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:27:52 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/19 13:36:52 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:45:03 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define GET_NEXT_LINE_H
 #include <unistd.h>
 #include <stdlib.h>
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 3
+#endif
 
 char *get_next_line(int fd);
 
