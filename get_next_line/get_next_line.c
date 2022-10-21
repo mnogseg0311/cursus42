@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:26:14 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/21 16:08:16 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:18:43 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line"
@@ -60,7 +60,7 @@ int	getdata(static char *str)
 	int		len;
 
 	len = strlenvar(str, '\0');
-	aux = ft_strdup(str);
+	aux = strdupvar(str, '\0');
 	if (!aux)
 		return (-1);
 	free(str);
@@ -70,11 +70,15 @@ int	getdata(static char *str)
 		free(aux);
 		return (-1);
 	}
-	str = ft_strcpy(aux);
+	strcpyvar(srt, aux, 0, strlenvar(aux, '\0') + 1);
 	free(aux);
-	aux = malloc(sizeof(char) * BUFFER_SIZE);
-	aux = read(fd, aux, BUFFER_SIZE);
-	ft_strlcat(str, aux, len + BUFFER_SIZE);
+	aux = malloc(sizeof(char) * BUFFER_SIZE);   //falta el \0
+	if (!aux || read(fd, aux, BUFFER_SIZE) < 0)
+	{
+		free(aux);
+		return (-1);
+	}
+	strcpyvar(str, aux, strlenvar(aux, '\n'), len + BUFFER_SIZE);
 	free(aux);
 	return (1);
 }
@@ -91,7 +95,7 @@ char *get_next_line(int fd)
 			return (NULL);
 		}
 	line = NULL;
-	line = copyline(str);
+	line = strdupvar(str, '\n');
 	if (!line || emptyline(str) == -1)
 	{
 		if (line)
