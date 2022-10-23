@@ -19,6 +19,12 @@
 # define BUFFER_SIZE 3
 #endif
 
-char *get_next_line(int fd);
+char	*get_next_line(int fd);
+char	*strdupvar(char *str, char c);
+int		getdata(char *str, int fd);
+int		checkline(char *str);
+int		emptyline(char *str);
+int		strlenvar(char *str, char c);
+void	strcpyvar(char *dst, char *src, int i, int size);
 
 #endif

@@ -9,9 +9,9 @@
 /*   Updated: 2022/10/21 18:18:43 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line"
+#include "get_next_line.h"
 
-int	emptyline(static char *str)
+int	emptyline(char *str)
 {
 	char	*aux;
 	int		i;
@@ -54,7 +54,7 @@ int	checkline(char *str)
 	return (-1);
 }
 
-int	getdata(static char *str)
+int	getdata(char *str, int fd)
 {
 	char	*aux;
 	int		len;
@@ -70,15 +70,15 @@ int	getdata(static char *str)
 		free(aux);
 		return (-1);
 	}
-	strcpyvar(srt, aux, 0, strlenvar(aux, '\0') + 1);
+	strcpyvar(str, aux, 0, strlenvar(aux, '\0') + 1);
 	free(aux);
-	aux = malloc(sizeof(char) * BUFFER_SIZE);   //falta el \0
+	aux = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!aux || read(fd, aux, BUFFER_SIZE) < 0)
 	{
 		free(aux);
 		return (-1);
 	}
-	strcpyvar(str, aux, strlenvar(aux, '\n'), len + BUFFER_SIZE);
+	strcpyvar(str, aux, strlenvar(aux, '\n'), len + BUFFER_SIZE + 1);
 	free(aux);
 	return (1);
 }
@@ -89,7 +89,7 @@ char *get_next_line(int fd)
 	char		*line;
 
 	while (checkline(str) == -1)
-		if (getdata(str) == -1)
+		if (getdata(str, fd) == -1)
 		{
 			free(str);
 			return (NULL);
@@ -104,4 +104,10 @@ char *get_next_line(int fd)
 		return (NULL);
 	}
 	return (line);
+}
+
+#include <stdio.h>
+int main(int argc, char **argv)
+{
+	printf("%s", get_next_line(1));
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line"
+#include "get_next_line.h"
 
 int	strlenvar(char *str, char c)
 {
@@ -47,7 +47,16 @@ char	*strdupvar(char *str, char c)
 	return (cpy);
 }
 
-void	strcpyvar(char dst, char src, int i, int size)
+void	strcpyvar(char *dst, char *src, int i, int size)
 {
+	int	j;
 
+	j = 0;
+	while (j < size && src[i] != '\0')
+	{
+		dst[j] = src[i];
+		i++;
+		j++;
+	}
+	dst[j] = '\0';
 }
