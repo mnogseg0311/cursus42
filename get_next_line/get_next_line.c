@@ -107,7 +107,12 @@ char *get_next_line(int fd)
 }
 
 #include <stdio.h>
-int main(int argc, char **argv)
+int main()
 {
-	printf("%s", get_next_line(1));
+	FILE*	fd;
+	fd = fopen("fitxer.txt", "r");
+	if (!fd)
+		return (-1);
+	printf("%s", get_next_line(fd));
+	fclose(fd);
 }
