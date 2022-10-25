@@ -6,38 +6,64 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:26:14 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/21 18:18:43 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/25 21:24:01 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
+#include <stdio.h>
 
-int	emptyline(char *str)
+char *nice_free(char **ptr)
 {
+	free (*ptr);
+	*ptr = NULL;
+	return(NULL);
+}
+
+char *emptyline(char *str)
+{
+//	printf("hola\n");
+
 	char	*aux;
 	int		i;
 	int		j;
+	int x;
 
-	j = strlenvar(str, '\n');
-	aux = strdupvar(str, '\0');
-	if (!aux)
-		return (-1);
-	free(str);
-	str = malloc(sizeof(char) * (strlenvar(aux, '\0') - j));
-	if (!str)
+	x = 0;
+	j = 0;
+	//printf("hola2\n");
+	while(str && str[x] && str[x] != '\n')
+		x++;
+	//printf("hola 2.5\n");
+	//printf("x vale = %d\n", x);
+	if(!str)
+		return(nice_free(&str));
+	if(!str[x])
 	{
-		free(aux);
-		return (-1);
+		//printf("hago free y me quiero ir\n");
+		return(nice_free(&str));
 	}
-	j++;
-	i = 0;
-	while (aux[j] != '\0')
+	aux = malloc(sizeof(char) * (strlenvar(str, '\0') - x + 1));
+	if (!aux)
 	{
-		str[i] = aux[j];
-		i++;
+		return (nice_free(&str));
+	}
+	x++;
+	i = 0;
+	while (str[x] != '\0')
+	{
+		aux[j] = str[x];
+		x++;
 		j++;
 	}
-	free(aux);
-	return (1);
+	if(j > 0)
+		aux[j] = '\0';
+	else
+	{
+		free(aux);
+		return(nice_free(&str));
+	}
+	nice_free(&str);
+	return (aux);
 }
 
 int	checkline(char *str)
@@ -54,65 +80,61 @@ int	checkline(char *str)
 	return (-1);
 }
 
-int	getdata(char *str, int fd)
+char *getdata(char *str, int fd)
 {
-	char	*aux;
-	int		len;
-
-	len = strlenvar(str, '\0');
-	aux = strdupvar(str, '\0');
-	if (!aux)
-		return (-1);
-	free(str);
-	str = malloc(sizeof(char) * (len + BUFFER_SIZE));
-	if (!str)
+	char buffer[BUFFER_SIZE + 1];
+	int read_bytes;
+	
+	//printf("Entro en get_data\n");
+	read_bytes = 1 ;
+	buffer[0] = '\0';
+	//printf("Antes del hile\n");
+	while(read_bytes > 0 && !ft_strchr(buffer, '\n'))
 	{
-		free(aux);
-		return (-1);
+		//printf("Entrp en el while\n");
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if(read_bytes > 0)
+		{
+			buffer[read_bytes] = '\0';
+			str = ft_strjoin(str, buffer);
+		}
 	}
-	strcpyvar(str, aux, 0, strlenvar(aux, '\0') + 1);
-	free(aux);
-	aux = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!aux || read(fd, aux, BUFFER_SIZE) < 0)
+	//printf("Despues del while de getdata str = |%s|\n", str);
+	if(read_bytes == -1)
 	{
-		free(aux);
-		return (-1);
+		free(str);
+		return(NULL);
 	}
-	strcpyvar(str, aux, strlenvar(aux, '\n'), len + BUFFER_SIZE + 1);
-	free(aux);
-	return (1);
+	return(str);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str = NULL;
 	char		*line;
 
-	while (checkline(str) == -1)
-		if (getdata(str, fd) == -1)
-		{
-			free(str);
-			return (NULL);
-		}
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return(NULL);
+	if(!str || (str && !ft_strchr(str, '\n')))
+	{
+		//printf("Entro en el while de getdata\n");
+		str = getdata(str, fd);
+	}
+	if(!str)
+		return(NULL);
+
+//	printf("Despues de gedata str = |%s|\n", str);
 	line = NULL;
 	line = strdupvar(str, '\n');
-	if (!line || emptyline(str) == -1)
+//	printf("La nueva linea es = |%s|\n", line);
+	if(!line)
 	{
-		if (line)
-			free(line);
 		free(str);
-		return (NULL);
+		str = NULL;
+		return(NULL);
 	}
+//	printf("Antes de empty\n");
+	str =  emptyline(str);
+	//printf("Antes de salir en statica = |%s|\n", str);
 	return (line);
-}
-
-#include <stdio.h>
-int main()
-{
-	FILE*	fd;
-	fd = fopen("fitxer.txt", "r");
-	if (!fd)
-		return (-1);
-	printf("%s", get_next_line(fd));
-	fclose(fd);
 }
