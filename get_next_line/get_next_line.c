@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:26:14 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/25 21:24:01 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:37:30 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -64,20 +64,6 @@ char *emptyline(char *str)
 	}
 	nice_free(&str);
 	return (aux);
-}
-
-int	checkline(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (-1);
 }
 
 char *getdata(char *str, int fd)

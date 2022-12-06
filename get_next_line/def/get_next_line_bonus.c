@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:58:46 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/10/26 19:49:44 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:21:00 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line_bonus.h"
@@ -73,10 +73,10 @@ char	*getdata(char *str, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*str[257];
+	static char	*str[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	if (!str[fd] || !ft_strchr(str[fd], '\n'))
 		str[fd] = getdata(str[fd], fd);
