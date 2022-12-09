@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 14:47:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/08 16:25:17 by mnoguera         ###   ########.fr       */
+/*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
+/*   Updated: 2022/12/09 17:43:41 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (1);
-	if (checkinput(argv) == -1)
+	stackB.first = NULL;
+	stackB.len = 0;
+	if (getinput(argc - 1, argv, stackA) == -1)
 	{
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	
-	stackB.first = NULL;
-	stackB.len = 0;
 }
+
