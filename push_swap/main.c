@@ -12,8 +12,6 @@
 
 #include "push_swap"
 
-void	push_swap();
-
 int	main(int argc, char **argv)
 {
 	t_stack	stackA;
@@ -23,7 +21,9 @@ int	main(int argc, char **argv)
 		return (1);
 	stackB.first = NULL;
 	stackB.len = 0;
-	if (getinput(argc - 1, argv, stackA) == -1)
+	stackA.first = first_piece();
+	stackA.len = 0;
+	if (!getdata(argc, argv, stackA))
 	{
 		write(2, "Error\n", 6);
 		return (0);
