@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void	free_pieces(t_piece **first)
 {
 	t_piece	*piece;
@@ -28,7 +28,7 @@ void	free_pieces(t_piece **first)
 		*first = piece;
 	}
 }
-
+*/
 int	add_piece(t_piece *last, int number, int game_number)
 {
 	t_piece	*new;
@@ -52,7 +52,7 @@ t_piece	*last_piece(t_piece *piece)
 	return (piece);
 }
 
-t_piece	*first_piece(NULL)
+t_piece	*first_piece(void)
 {
 	t_piece *first;
 	

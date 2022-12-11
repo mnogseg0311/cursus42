@@ -39,10 +39,10 @@ int	fill_stack(t_stack stackA, int *data, int len)
 			return (0);
 		if (!add_piece(last_piece(stackA.first), data[i], game_num))
 		{
-			free_pieces(&stackA.first);
+		//	free_pieces(&stackA.first);
 			return (0);
 		}
-		stackA->len++;
+		stackA.len++;
 		i++;
 	}
 	return (1);
@@ -57,7 +57,7 @@ int	check_limit(char *num, int len)
 	i = 0;
 	if (len > 11 || (len == 11 && num[0] != '-' && num[0] != '+'))
 		return (0);
-	if (len == 10 && ft_strncmp(num, "2147483648", 10) > 0)
+	if (len == 10 && ft_strncmp(num, "2147483647", 10) > 0)
 		return (0);
 	else if (num[0] == '-' && ft_strncmp(num, "-2147483648", 11) > 0)
 		return (0);
@@ -75,11 +75,11 @@ int	is_int(char *number)
 
 	i = 0;
 	len = ft_strlen(number);
-	if (str[i] == '-' || str[i] == '+')
+	if (number[i] == '-' || number[i] == '+')
 		i++;
-	while (str[i] != '\0')
+	while (number[i] != '\0')
 	{
-		if (!is_digit(str[i]))
+		if (!ft_isdigit(number[i]))
 			return (0);
 		i++;
 	}
