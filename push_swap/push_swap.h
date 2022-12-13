@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/08 16:25:21 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:00:45 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ typedef struct s_stack
 } t_stack;
 
 /*getdata.c*/
-int	getdata(int argc, char **argv, t_stack stackA);
+int	getdata(int argc, char **argv, t_stack *stackA);
 int	is_int(char *number);
 int	check_limit(char *num, int len);
-int	fill_stack(t_stack stackA, int *data, int len);
+int	fill_stack(t_stack *stackA, int *data, int len);
 int	game_number(int num, int *data, int len);
 
 /*libft.c*/

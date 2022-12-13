@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:37:30 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/09 18:08:14 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:09:01 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,20 @@ void	free_pieces(t_piece **first)
 	}
 }
 */
+#include <stdio.h>
 int	add_piece(t_piece *last, int number, int game_number)
 {
 	t_piece	*new;
 
+	printf("a afegir una nova peça\n");
 	new = malloc(sizeof(t_piece));
 	if (!new)
 		return (0);
+	printf("number=%d, game_number=%d\n", number, game_number);
 	new->num = number;
 	new->game_num = game_number;
 	new->next = NULL;
+	printf("new->num=%d, new->game_num=%d\n", new->num, new->game_num);
 	last->next = new;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/09 17:43:41 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:48:39 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	main(int argc, char **argv)
 	stackB.len = 0;
 	stackA.first = first_piece();
 	stackA.len = 0;
-	if (!getdata(argc, argv, stackA))
+	if (!getdata(argc, argv, &stackA))
 	{
 		write(2, "Error\n", 6);
 		return (0);
 	}
 //	print_pieces(stackA);
-	printf("%d\n", stackA.len);
+	printf("\n%d\n", stackA.len);
 	return (0);
 }
 

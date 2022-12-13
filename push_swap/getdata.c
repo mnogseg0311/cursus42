@@ -25,8 +25,8 @@ int	game_number(int	num, int *data, int len)
 }
 
 /*per cada int crea una nova peça posant-hi el game_num*/
-
-int	fill_stack(t_stack stackA, int *data, int len)
+#include <stdio.h>
+int	fill_stack(t_stack *stackA, int *data, int len)
 {
 	int	i;
 	int	game_num;
@@ -34,15 +34,19 @@ int	fill_stack(t_stack stackA, int *data, int len)
 	i = 0;
 	while (i < len)
 	{
+		printf("al while\n");
 		game_num = game_number(data[i], data, len);
+		printf("i=%d, data[i]=%d, game_num=%d\n", i, data[i], game_num);
 		if (game_num == -1)
 			return (0);
-		if (!add_piece(last_piece(stackA.first), data[i], game_num))
+		if (!add_piece(last_piece(stackA->first), data[i], game_num))
 		{
 		//	free_pieces(&stackA.first);
 			return (0);
 		}
-		stackA.len++;
+		printf("stackA->first->num=%d\n", stackA->first->num);
+		stackA->len++;
+		printf("stackA->len=%d\n", stackA->len);
 		i++;
 	}
 	return (1);
@@ -90,7 +94,7 @@ int	is_int(char *number)
 
 /*comprova que l'input rebut sigui correcte i el desa en l'stackA, si hi ha algun error, retorna 0, si tot va be, 1*/
 
-int	getdata(int argc, char **argv, t_stack stackA)
+int	getdata(int argc, char **argv, t_stack *stackA)
 {
 	int	*data;
 	int	i;
@@ -114,6 +118,7 @@ int	getdata(int argc, char **argv, t_stack stackA)
 		free(data);
 		return (0);
 	}
+	printf("Un cop ja ple, stackA.len=%d\n", stackA->len);
 	free(data);
 	return (1);
 }
