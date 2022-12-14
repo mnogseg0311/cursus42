@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/13 16:48:39 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/14 18:47:54 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,13 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 //	print_pieces(stackA);
-	printf("\n%d\n", stackA.len);
+	printf("AL MAIN:\n");
+	printf("primera peça: num=%d, game_num=%d\n", stackA.first->num, stackA.first->game_num);
+	if (stackA.first->next == NULL)
+		printf("next es NULL\n");
+	else
+		printf("next no es NULL\n");
+	printf("StackA len = %d\n", stackA.len);
 	return (0);
 }
 
