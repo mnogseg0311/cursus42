@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/14 17:50:31 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:13:28 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_atoi(const char *str);
 /*pieces.c*/
 t_piece	*first_piece(void);
 t_piece	*last_piece(t_piece *piece);
-int	add_piece(t_piece *last, int number, int game_number);
+int	add_piece(t_piece **last, int number, int game_number);
 void	free_pieces(t_piece **first);
 
 #endif

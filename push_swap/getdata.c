@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/14 17:50:11 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:33:32 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,19 @@ int	fill_stack(t_stack *stackA, int *data, int len)
 {
 	int	i;
 	int	game_num;
+	t_piece	*p;
 
 	i = 0;
 	while (i < len)
 	{
-		printf("al while\n");
+		//printf("al while\n");
 		game_num = game_number(data[i], data, len);
-		printf("i=%d, data[i]=%d, game_num=%d\n", i, data[i], game_num);
+		//printf("i=%d, data[i]=%d, game_num=%d\n", i, data[i], game_num);
 		if (game_num == -1)
 			return (0);
-		if (!add_piece(last_piece(stackA->first), data[i], game_num))
+		p = (stackA->first);
+		p = last_piece(p);
+		if (!add_piece(&p, data[i], game_num))
 		{
 		//	free_pieces(&stackA.first);
 			return (0);
@@ -130,7 +133,7 @@ int	getdata(int argc, char **argv, t_stack *stackA)
 		free(data);
 		return (0);
 	}
-	printf("Un cop ja ple, stackA.len=%d\n", stackA->len);
+	printf("\nUn cop ja ple, stackA.len=%d\n", stackA->len);
 	free(data);
 	return (1);
 }

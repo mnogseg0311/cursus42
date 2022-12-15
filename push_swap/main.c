@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/14 18:47:54 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:33:27 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (0);
 	}
-//	print_pieces(stackA);
-	printf("AL MAIN:\n");
-	printf("primera peça: num=%d, game_num=%d\n", stackA.first->num, stackA.first->game_num);
+	
 	if (stackA.first->next == NULL)
-		printf("next es NULL\n");
+		printf("\nnext es NULL\n\n");
 	else
-		printf("next no es NULL\n");
+		printf("\nnext no es NULL\n\n");
+
+//	print_pieces(stackA);
+//el problema esta a getdata, modifica el next pero no num i game_num
+	printf("primera peça: num=%d, game_num=%d\n", stackA.first->num, stackA.first->game_num);
 	printf("StackA len = %d\n", stackA.len);
 	return (0);
 }
