@@ -6,18 +6,18 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/16 16:49:05 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:05:33 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 #include <stdio.h>
-void	print_pieces(t_stack stackA)
+void	print_pieces(t_stack *stackA)
 {
 	t_piece	*piece;
 
-	piece = stackA.first;
+	piece = stackA->first;
 	while (piece != NULL)
 	{
 		printf("num=%d\ngame_num=%d\n\n", piece->num, piece->game_num);
@@ -41,11 +41,8 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (0);
 	}
-//	print_pieces(stackA);
-	if (stackA.first->next == NULL)
-		printf("next es NULL\n");
-	else
-		printf("next no es NULL\n");
+	print_pieces(&stackA);							//no peta, pero no fa res
+	printf("stackA.len = %d\n", stackA.len);		//es 0 sempre, no afegeix peces
 	return (0);
 }
 
