@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/15 18:33:27 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:49:05 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 void	print_pieces(t_stack stackA)
 {
 	t_piece	*piece;
-	t_piece	*aux;
 
 	piece = stackA.first;
-	aux = piece;
-	while (piece->next != NULL)
+	while (piece != NULL)
 	{
-		printf("num=%d\ngame_num=%d\n\n", aux->num, aux->game_num);
-		aux = piece;
+		printf("num=%d\ngame_num=%d\n\n", piece->num, piece->game_num);
+		piece = piece->next;
 	}
 }
 
@@ -36,23 +34,18 @@ int	main(int argc, char **argv)
 		return (1);
 	stackB.first = NULL;
 	stackB.len = 0;
-	stackA.first = first_piece();
+	stackA.first = NULL;
 	stackA.len = 0;
 	if (!getdata(argc, argv, &stackA))
 	{
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	
-	if (stackA.first->next == NULL)
-		printf("\nnext es NULL\n\n");
-	else
-		printf("\nnext no es NULL\n\n");
-
 //	print_pieces(stackA);
-//el problema esta a getdata, modifica el next pero no num i game_num
-	printf("primera peça: num=%d, game_num=%d\n", stackA.first->num, stackA.first->game_num);
-	printf("StackA len = %d\n", stackA.len);
+	if (stackA.first->next == NULL)
+		printf("next es NULL\n");
+	else
+		printf("next no es NULL\n");
 	return (0);
 }
 

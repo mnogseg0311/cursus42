@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/15 18:33:32 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:53:29 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,23 @@ int	game_number(int	num, int *data, int len)
 
 /*per cada int crea una nova peça posant-hi el game_num*/
 #include <stdio.h>
+
 int	fill_stack(t_stack *stackA, int *data, int len)
 {
 	int	i;
 	int	game_num;
-	t_piece	*p;
 
 	i = 0;
 	while (i < len)
 	{
-		//printf("al while\n");
 		game_num = game_number(data[i], data, len);
-		//printf("i=%d, data[i]=%d, game_num=%d\n", i, data[i], game_num);
 		if (game_num == -1)
 			return (0);
-		p = (stackA->first);
-		p = last_piece(p);
-		if (!add_piece(&p, data[i], game_num))
+		if (!add_piece(stackA, data[i], game_num))
 		{
 		//	free_pieces(&stackA.first);
 			return (0);
 		}
-		printf("stackA->first->num=%d\n", stackA->first->num);
-		stackA->len++;
-		printf("stackA->len=%d\n", stackA->len);
 		i++;
 	}
 	return (1);
@@ -86,6 +79,7 @@ int	check_limit(char *num, int len)
 }
 
 /*retorna 1 si l'input es valid i 0 en cas contrari*/
+//s'haurien de depurar els 0's?
 
 int	is_int(char *number)
 {
@@ -133,7 +127,6 @@ int	getdata(int argc, char **argv, t_stack *stackA)
 		free(data);
 		return (0);
 	}
-	printf("\nUn cop ja ple, stackA.len=%d\n", stackA->len);
 	free(data);
 	return (1);
 }

@@ -6,65 +6,67 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:05:23 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/15 18:33:30 by mnoguera         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:39:37 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void	free_pieces(t_piece **first)
-{
-	t_piece	*piece;
-
-	if (!first)
-		return ;
-	piece = *first;
-	while (*first)
-	{
-		piece = (*first)->next;
-		free(first->num);
-		free(first->game_num);
-		free(first);
-		*first = piece;
-	}
-}
-*/
 #include <stdio.h>
-int	add_piece(t_piece **last, int number, int game_number)
+
+t_piece	*new_piece(int num, int game_num)
 {
 	t_piece	*new;
 
-	//printf("a afegir una nova peça\n");
 	new = malloc(sizeof(t_piece));
 	if (!new)
-		return (0);
-	//printf("number=%d, game_number=%d\n", number, game_number);
-	new->num = number;
-	new->game_num = game_number;
+		return (NULL);
+	new->num = num;
+	new->game_num = game_num;
 	new->next = NULL;
-	//printf("new->num=%d, new->game_num=%d\n", new->num, new->game_num);
-	(*last)->next = new;
+	return (new);
+}
+
+t_piece	*last_piece(t_piece *pce)
+{
+	if (pce == NULL)
+		return (pce);
+	while (pce->next != NULL)
+		pce = pce->next;
+	return (pce);
+}
+
+void	add_piece_back(t_piece **pce, t_piece *new)
+{
+	t_piece	*aux;
+
+	if (pce && new)
+	{
+		if (!*pce)
+		{
+			*pce = new;
+			return ;
+		}
+		aux = last_piece(*pce);
+		aux->next = new;
+	}
+}
+
+void	add_piece_front(t_piece **pce, t_piece *new)
+{
+	new->next = *pce;
+	*pce = new;
+}
+
+int	add_piece(t_stack *stack, int num, int game_num)
+{
+	t_piece	*new;
+	t_piece	*pce;
+
+	pce = NULL;
+	new = new_piece(num, game_num);
+	if (!new)
+		return (0);
+	pce = last_piece(stack->first);
+	add_piece_back(&pce, new);
 	return (1);
-}
-
-t_piece	*last_piece(t_piece *piece)
-{
-	if (piece == NULL)
-		return (NULL);
-	while (piece->next != NULL)
-		piece = piece->next;
-	return (piece);
-}
-
-t_piece	*first_piece(void)
-{
-	t_piece *first;
-	
-	first = malloc(sizeof(t_piece));
-	if (!first)
-		return (NULL);
-	first->num = 0;
-	first->game_num = 0;
-	first->next = NULL;
-	return (first);
 }
