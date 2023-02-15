@@ -6,25 +6,11 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:05:23 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/16 16:39:37 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:14:19 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-
-t_piece	*new_piece(int num, int game_num)
-{
-	t_piece	*new;
-
-	new = malloc(sizeof(t_piece));
-	if (!new)
-		return (NULL);
-	new->num = num;
-	new->game_num = game_num;
-	new->next = NULL;
-	return (new);
-}
 
 t_piece	*last_piece(t_piece *pce)
 {
@@ -57,16 +43,17 @@ void	add_piece_front(t_piece **pce, t_piece *new)
 	*pce = new;
 }
 
-int	add_piece(t_stack *stack, int num, int game_num)
+int	stack_len(t_piece *piece)
 {
-	t_piece	*new;
-	t_piece	*pce;
+	int	i;
 
-	pce = NULL;
-	new = new_piece(num, game_num);
-	if (!new)
+	if (piece == NULL)
 		return (0);
-	pce = last_piece(stack->first);
-	add_piece_back(&pce, new);
-	return (1);
+	i = 1;
+	while (piece->next != NULL)
+	{
+		piece = piece->next;
+		i++;
+	}
+	return (i);
 }

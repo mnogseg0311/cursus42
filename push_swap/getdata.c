@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2022/12/16 15:53:29 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:09:44 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,40 @@ int	game_number(int	num, int *data, int len)
 	return (lower);
 }
 
-/*per cada int crea una nova peça posant-hi el game_num*/
-#include <stdio.h>
+t_piece	*new_node(void)
+{
+	t_piece	*new;
 
-int	fill_stack(t_stack *stackA, int *data, int len)
+	new = malloc(sizeof(t_piece));
+	new->num = 0;
+	new->game_num = 0;
+	new->next = NULL;
+	return (new);
+}
+
+/*per cada int crea una nova peça posant-hi el game_num*/
+
+t_piece	*get_list(int *data, int len)
 {
 	int	i;
-	int	game_num;
-
+	t_piece *first;
+	t_piece	*aux;
+	
+	first = new_node();
+	aux = first;
 	i = 0;
 	while (i < len)
 	{
-		game_num = game_number(data[i], data, len);
-		if (game_num == -1)
-			return (0);
-		if (!add_piece(stackA, data[i], game_num))
+		aux->game_num = game_number(data[i], data, len);
+		aux->num = data[i];
+		if (i < len - 1)
 		{
-		//	free_pieces(&stackA.first);
-			return (0);
+			aux->next = new_node();
+			aux = aux->next;
 		}
 		i++;
 	}
-	return (1);
+	return (first);
 }
 
 /*retorna 0 si el nombre es passa del limit dels enters i 1 en cas contrari*/
@@ -103,10 +115,11 @@ int	is_int(char *number)
 
 /*comprova que l'input rebut sigui correcte i el desa en l'stackA, si hi ha algun error, retorna 0, si tot va be, 1*/
 
-int	getdata(int argc, char **argv, t_stack *stackA)
+t_piece	*getdata(int argc, char **argv)
 {
 	int	*data;
 	int	i;
+	t_piece	*first;
 
 	data = malloc(sizeof(int) * (argc - 1));
 	if (!data)
@@ -122,11 +135,7 @@ int	getdata(int argc, char **argv, t_stack *stackA)
 		data[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
-	if (!fill_stack(stackA, data, argc - 1))
-	{
-		free(data);
-		return (0);
-	}
+	first = get_list(data, argc - 1);
 	free(data);
-	return (1);
+	return (first);
 }
