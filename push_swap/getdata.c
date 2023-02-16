@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/15 19:09:44 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:37:41 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,14 +123,14 @@ t_piece	*getdata(int argc, char **argv)
 
 	data = malloc(sizeof(int) * (argc - 1));
 	if (!data)
-		return (0);
+		return (NULL);
 	i = 1;
 	while (i < argc)
 	{
 		if (!is_int(argv[i]))
 		{
 			free(data);
-			return (0);
+			return (NULL);
 		}
 		data[i - 1] = ft_atoi(argv[i]);
 		i++;

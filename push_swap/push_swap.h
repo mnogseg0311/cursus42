@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/15 13:25:41 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:15:20 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ t_piece	*last_piece(t_piece *pce);
 void	add_piece_back(t_piece **pce, t_piece *new);
 void	add_piece_front(t_piece **pce, t_piece *new);
 int		stack_len(t_piece *piece);
+
+/*instructions.c*/
+void	swap(t_stack *stack, char *name);
+void	rotate(t_stack *stack, char *name);
+void	rev_rotate(t_stack *stack, char *name);
 
 //a esborrar (main.c)
 void print_pieces(t_stack *stackA);

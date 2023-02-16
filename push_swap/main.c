@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/15 13:22:03 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:15:32 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,15 @@ int	main(int argc, char **argv)
 		return (1);
 	stackA = malloc(sizeof(stackA));
 	stackA->first = getdata(argc, argv);
+	if (stackA->first == NULL)
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
 	stackA->len = stack_len(stackA->first);
 	
+	print_pieces(stackA);
+	rev_rotate(stackA, "holii");
 	print_pieces(stackA);
 	return (0);
 }
