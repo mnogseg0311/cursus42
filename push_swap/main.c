@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/16 19:15:32 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:31:56 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	stackA = malloc(sizeof(stackA));
-	stackA->first = getdata(argc, argv);
+	stackA->first = getinput(argc, argv);
 	if (stackA->first == NULL)
 	{
 		write(2, "Error\n", 6);
@@ -47,7 +47,16 @@ int	main(int argc, char **argv)
 	stackA->len = stack_len(stackA->first);
 	
 	print_pieces(stackA);
-	rev_rotate(stackA, "holii");
-	print_pieces(stackA);
+	//rev_rotate(stackA, "holii");
+	//print_pieces(stackA);
 	return (0);
 }
+
+
+/*
+ * depurar 0's
+ * cas que posin un string
+ * posar comentaris
+ * proteir quan dona errors
+ * seguir amb els moviments (canviar lo de l'holii)
+*/

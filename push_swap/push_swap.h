@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/16 19:15:20 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:08:05 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 } t_stack;
 
 /*getdata.c*/
-t_piece		*getdata(int argc, char **argv);
+t_piece		*getinput(int argc, char **argv);
 int		is_int(char *number);
 int		check_limit(char *num, int len);
 t_piece		*get_list(int *data, int len);
@@ -40,6 +40,12 @@ int		ft_isdigit(int c);
 int		ft_strlen(char *str);
 int		ft_strncmp(const char *s1, const char *s2, int n);
 int		ft_atoi(const char *str);
+
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 /*pieces.c*/
 t_piece	*last_piece(t_piece *pce);

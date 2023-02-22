@@ -6,11 +6,12 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/16 15:37:41 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:11:22 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 /*recorre l’array amb dos auxiliars, una conta quants n’hi ha de més petits i l‘altre quants n’hi ha de més grans, retorna el game_num ó -1 si està repetit */
 
@@ -46,8 +47,6 @@ t_piece	*new_node(void)
 	new->next = NULL;
 	return (new);
 }
-
-/*per cada int crea una nova peça posant-hi el game_num*/
 
 t_piece	*get_list(int *data, int len)
 {
@@ -90,8 +89,7 @@ int	check_limit(char *num, int len)
 	return (1);
 }
 
-/*retorna 1 si l'input es valid i 0 en cas contrari*/
-//s'haurien de depurar els 0's?
+//s'han de depurar els 0's
 
 int	is_int(char *number)
 {
@@ -113,29 +111,60 @@ int	is_int(char *number)
 	return (1);
 }
 
-/*comprova que l'input rebut sigui correcte i el desa en l'stackA, si hi ha algun error, retorna 0, si tot va be, 1*/
+int	count_nums(char *str)
+{
+	int	i;
+	int	num;
 
-t_piece	*getdata(int argc, char **argv)
+	num = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ' ' || str[i] == '	')
+		{
+			while (str[i] == ' ' || str[i] == '	')
+				i++;
+		}
+		else
+		{
+			num++;
+			while (str[i] != ' ' && str[i] != '	' && str[i] != '\0')
+				i++;
+		}
+	}
+	return (num);
+}
+
+t_piece	*getdata(int len, char **str)
 {
 	int	*data;
 	int	i;
 	t_piece	*first;
 
-	data = malloc(sizeof(int) * (argc - 1));
+	data = malloc(sizeof(int) * len);
 	if (!data)
 		return (NULL);
 	i = 1;
-	while (i < argc)
+	while (i <= len)
 	{
-		if (!is_int(argv[i]))
+		if (!is_int(str[i]))
 		{
 			free(data);
 			return (NULL);
 		}
-		data[i - 1] = ft_atoi(argv[i]);
+		data[i - 1] = ft_atoi(str[i]);
 		i++;
 	}
-	first = get_list(data, argc - 1);
+	first = get_list(data, len);
 	free(data);
 	return (first);
 }
+
+t_piece	*getinput(int argc, char **argv)
+{
+	if (argc == 2)
+		return (getdata(count_nums(argv[1]) - 1, ft_split(ft_strjoin("./a.out ", argv[1]), ' ')));
+	//en aquest cas no agafa l'ultim
+	return (getdata(argc - 1, argv));
+}
+
