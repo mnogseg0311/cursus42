@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/22 17:11:22 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:27:12 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,13 @@ int	check_limit(char *num, int len)
 	return (1);
 }
 
-//s'han de depurar els 0's
-
 int	is_int(char *number)
 {
 	int	i;
 	int	len;
 
 	i = 0;
+	number = ft_strtrim(number, "0");
 	len = ft_strlen(number);
 	if (number[i] == '-' || number[i] == '+')
 		i++;
@@ -137,6 +136,7 @@ int	count_nums(char *str)
 
 t_piece	*getdata(int len, char **str)
 {
+	printf("len = %d\n", len);
 	int	*data;
 	int	i;
 	t_piece	*first;
@@ -163,8 +163,11 @@ t_piece	*getdata(int len, char **str)
 t_piece	*getinput(int argc, char **argv)
 {
 	if (argc == 2)
-		return (getdata(count_nums(argv[1]) - 1, ft_split(ft_strjoin("./a.out ", argv[1]), ' ')));
-	//en aquest cas no agafa l'ultim
+		return (getdata(count_nums(argv[1]), ft_split(ft_strjoin("./a.out ", argv[1]), ' ')));
 	return (getdata(argc - 1, argv));
 }
 
+
+//s'ha de controlar errors tipus quan estan repetits
+//accepta l'input 0000+2 o 00-6 com a 0
+//el pol diu que no ho hauria d'agafar, com a molt -0005 i ho fa posant fins a 9 0's
