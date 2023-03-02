@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 15:17:26 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:15:52 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_piece	*get_list(int *data, int *game_nums, int len)
 	int	i;
 	t_piece *first;
 	t_piece	*aux;
-	
+
 	if (!game_nums)
 		return (NULL);
 	first = new_node();
@@ -91,13 +91,45 @@ int	check_limit(char *num, int len)
 	return (1);
 }
 
+char	*trim_zeros(char *num)
+{
+	int		i;
+	int		j;
+	int		s;
+	int		len;
+	char	*trimed;
+
+	i = 0;
+	if (num[i] == '+' || num [i] == '-')
+		i++;
+	s = i;
+	while (num[i] == '0')
+		i++;
+	if (num[i] == '\0')
+		return ("0");
+	len = ft_strlen(num);
+	trimed = malloc(sizeof(char) * (len - i + s));
+	if (!trimed)
+		return (NULL);
+	if (s)
+		trimed[0] = num[0];
+	j = s;
+	while (num[i] != '\0')
+	{
+		trimed[j] = num[i];
+		i++;
+		j++;
+	}
+	return (trimed);
+}
+
 int	is_int(char *number)
 {
 	int	i;
 	int	len;
 
 	i = 0;
-	number = ft_strtrim(number, "0");
+	number = trim_zeros(number);
 	len = ft_strlen(number);
 	if (number[i] == '-' || number[i] == '+')
 		i++;
@@ -148,7 +180,7 @@ int	*game_numbers(int *data, int len)
 	while (i < len)
 	{
 		gnums[i] = game_number(data[i], data, len);
-		if (!gnums[i])
+		if (gnums[i] < 0)
 		{
 			free(gnums);
 			return (NULL);
@@ -191,6 +223,6 @@ t_piece	*getinput(int argc, char **argv)
 }
 
 
-//s'ha de controlar errors tipus quan estan repetits
+
 //accepta l'input 0000+2 o 00-6 com a 0
-//el pol diu que no ho hauria d'agafar, com a molt -0005 i ho fa posant fins a 9 0's
+//no ho hauria d'agafar, com a molt -0005 i ho fa posant fins a 9 0's

@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 14:54:58 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:43:12 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	main(int argc, char **argv)
 
 /*
  * depurar 0's
- * cas que posin un string
+ * cas que posin un string √√√√√√√√√√√√√
  * posar comentaris
- * protegir quan dona errors
+ * protegir quan dona errors √√√√√√√√√√√√√
  * seguir amb els moviments (canviar lo de l'holii)
 */
