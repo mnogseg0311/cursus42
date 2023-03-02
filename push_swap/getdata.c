@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/23 17:27:12 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:17:26 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,20 @@ t_piece	*new_node(void)
 	return (new);
 }
 
-t_piece	*get_list(int *data, int len)
+t_piece	*get_list(int *data, int *game_nums, int len)
 {
 	int	i;
 	t_piece *first;
 	t_piece	*aux;
 	
+	if (!game_nums)
+		return (NULL);
 	first = new_node();
 	aux = first;
 	i = 0;
 	while (i < len)
 	{
-		aux->game_num = game_number(data[i], data, len);
+		aux->game_num = game_nums[i];
 		aux->num = data[i];
 		if (i < len - 1)
 		{
@@ -134,11 +136,32 @@ int	count_nums(char *str)
 	return (num);
 }
 
+int	*game_numbers(int *data, int len)
+{
+	int	*gnums;
+	int	i;
+
+	gnums = malloc(sizeof(int) * len);
+	if (!gnums)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		gnums[i] = game_number(data[i], data, len);
+		if (!gnums[i])
+		{
+			free(gnums);
+			return (NULL);
+		}
+		i++;
+	}
+	return (gnums);
+}
+
 t_piece	*getdata(int len, char **str)
 {
-	printf("len = %d\n", len);
-	int	*data;
-	int	i;
+	int		*data;
+	int		i;
 	t_piece	*first;
 
 	data = malloc(sizeof(int) * len);
@@ -155,7 +178,7 @@ t_piece	*getdata(int len, char **str)
 		data[i - 1] = ft_atoi(str[i]);
 		i++;
 	}
-	first = get_list(data, len);
+	first = get_list(data, game_numbers(data, len), len);
 	free(data);
 	return (first);
 }

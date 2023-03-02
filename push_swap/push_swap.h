@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/23 16:49:10 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:10:41 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef struct s_stack
 
 /*getdata.c*/
 t_piece		*getinput(int argc, char **argv);
-int		is_int(char *number);
-int		check_limit(char *num, int len);
-t_piece		*get_list(int *data, int len);
-int		game_number(int num, int *data, int len);
+int			is_int(char *number);
+int			check_limit(char *num, int len);
+t_piece		*get_list(int *data, int *game_nums, int len);
+int			game_number(int num, int *data, int len);
 
 /*libft.c*/
 int		ft_isdigit(int c);
