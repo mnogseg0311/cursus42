@@ -6,14 +6,15 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 16:15:52 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:39:42 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-/*recorre l’array amb dos auxiliars, una conta quants n’hi ha de més petits i l‘altre quants n’hi ha de més grans, retorna el game_num ó -1 si està repetit */
+/*recorre l’array amb dos auxiliars, un conta quants n’hi ha de més petits i 
+l‘altre quants n’hi ha de més grans, retorna el game_num ó -1 si està repetit*/
 
 int	game_number(int	num, int *data, int len)
 {
@@ -47,6 +48,8 @@ t_piece	*new_node(void)
 	new->next = NULL;
 	return (new);
 }
+
+/*crea la llista de peces, retorna NULL si hi ha repeticions*/
 
 t_piece	*get_list(int *data, int *game_nums, int len)
 {
@@ -91,6 +94,8 @@ int	check_limit(char *num, int len)
 	return (1);
 }
 
+/*depura els 0's del nombre, accepta signe al davant*/
+
 char	*trim_zeros(char *num)
 {
 	int		i;
@@ -113,15 +118,14 @@ char	*trim_zeros(char *num)
 		return (NULL);
 	if (s)
 		trimed[0] = num[0];
-	j = s;
+	j = s - 1;
+	i--;
 	while (num[i] != '\0')
-	{
-		trimed[j] = num[i];
-		i++;
-		j++;
-	}
+		trimed[j++] = num[i++];
 	return (trimed);
 }
+
+/*comprova si es un enter dins del limit*/
 
 int	is_int(char *number)
 {
@@ -143,6 +147,8 @@ int	is_int(char *number)
 		return (check_limit(number, len));
 	return (1);
 }
+
+/*conta quants nombres hi ha en cas que l'inpot el posn com a string*/
 
 int	count_nums(char *str)
 {
@@ -168,6 +174,8 @@ int	count_nums(char *str)
 	return (num);
 }
 
+/*crea un array amb els game numbers*/
+
 int	*game_numbers(int *data, int len)
 {
 	int	*gnums;
@@ -189,6 +197,8 @@ int	*game_numbers(int *data, int len)
 	}
 	return (gnums);
 }
+
+/*crea un array amb les dades, comprova que son corretes i envia a fer la llista*/
 
 t_piece	*getdata(int len, char **str)
 {
@@ -215,14 +225,11 @@ t_piece	*getdata(int len, char **str)
 	return (first);
 }
 
+/*separa cas de tenir l'input en un sol string o sense*/
+
 t_piece	*getinput(int argc, char **argv)
 {
 	if (argc == 2)
 		return (getdata(count_nums(argv[1]), ft_split(ft_strjoin("./a.out ", argv[1]), ' ')));
 	return (getdata(argc - 1, argv));
 }
-
-
-
-//accepta l'input 0000+2 o 00-6 com a 0
-//no ho hauria d'agafar, com a molt -0005 i ho fa posant fins a 9 0's

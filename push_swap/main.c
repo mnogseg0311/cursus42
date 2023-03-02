@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 15:43:12 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:40:41 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,3 @@ int	main(int argc, char **argv)
 	//print_pieces(stackA);
 	return (0);
 }
-
-
-/*
- * depurar 0's
- * cas que posin un string √√√√√√√√√√√√√
- * posar comentaris
- * protegir quan dona errors √√√√√√√√√√√√√
- * seguir amb els moviments (canviar lo de l'holii)
-*/
