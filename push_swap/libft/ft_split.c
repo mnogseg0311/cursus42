@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:03:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/10 18:38:18 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:49:51 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,34 @@ static void	ft_free_malloc(char **mat, int i)
 	free(mat);
 }
 
+static char	*get_word(char const *s, char c, int i)
+{
+	int		j;
+	int		k;
+	int		len;
+	char	*word;
 
+	j = 0;
+	k = 0;
+	while (k < i)
+	{
+		while (s[j] == c)
+			j++;
+		while (s[j] != c && s[j] != '\0')
+			j++;
+		k++;
+	}
+	while (s[j] == c)
+		j++;
+	len = j;
+	while (s[len] != c && s[len] != '\0')
+		len++;
+	len -= j;
+	word = ft_substr(s, j, len);
+	if (!word)
+		return (NULL);
+	return (word);
+}
 
 static int	ft_fillmat(char const *s, char c, char **mat, int words)
 {
@@ -68,7 +95,7 @@ static int	ft_words(char const *s, char c)
 	return (num);
 }
 
-char	**ft_split(char const *s, char *c)
+char	**ft_split(char const *s, char c)
 {
 	char	**mat;
 	int		words;

@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 16:40:41 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:22:50 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	stackA->len = stack_len(stackA->first);
 	
 	print_pieces(stackA);
-	//rev_rotate(stackA, "holii");
-	//print_pieces(stackA);
+	rev_rotate(stackA, "holii");
+	print_pieces(stackA);
 	return (0);
 }
