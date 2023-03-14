@@ -1,3 +1,5 @@
+#include "../includes/push_swap.h"
+
 /*conta quants nombres hi ha en cas que l'inpot el posn com a string*/
 
 int	count_nums(char *str)
