@@ -29,26 +29,20 @@ typedef struct s_stack
 } t_stack;
 
 /*getdata.c*/
-t_piece		*getinput(int argc, char **argv);
-int			is_int(char *number);
-int			check_limit(char *num, int len);
-t_piece		*get_list(int *data, int *game_nums, int len);
-int			game_number(int num, int *data, int len);
+t_piece	*getinput(int argc, char **argv);
+t_piece	*getdata(int len, char **str);
+int		*game_numbers(int *data, int len)
+t_piece	*get_list(int *data, int *game_nums, int len);
+int		game_number(int num, int *data, int len);
 
-/*libft.c*/
-int		ft_isdigit(int c);
-int		ft_strlen(char *str);
-int		ft_strncmp(const char *s1, const char *s2, int n);
-int		ft_atoi(const char *str);
-
-char	**ft_split(char const *s, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strtrim(char const *s1, char const *set);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+/*datautils.c*/
+int		count_nums(char *str);
+int		is_int(char *number);
+char	*trim_zeros(char *num);
+int		check_limit(char *num, int len);
 
 /*pieces.c*/
+t_piece	*new_node(void);
 t_piece	*last_piece(t_piece *pce);
 void	add_piece_back(t_piece **pce, t_piece *new);
 void	add_piece_front(t_piece **pce, t_piece *new);

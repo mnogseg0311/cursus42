@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+t_piece	*new_node(void)
+{
+	t_piece	*new;
+
+	new = malloc(sizeof(t_piece));
+	new->num = 0;
+	new->game_num = 0;
+	new->next = NULL;
+	return (new);
+}
+
 t_piece	*last_piece(t_piece *pce)
 {
 	if (pce == NULL)

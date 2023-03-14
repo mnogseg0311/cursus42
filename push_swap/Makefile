@@ -10,27 +10,48 @@
 #                                                                              #
 # **************************************************************************** #
 
+NAME = push_swap.a
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
-NAME = push_swap.a
-SRCS = main.c getdata.c libft.c pieces.c
 
+#directories
+SRCS_DIR = ./srcs
+INCL_DIR = ./includes
+OBJS_DIR = ./objs
+LIBFT_DIR = ./libft
+
+#source files
+SRCS = $(SRCS_DIR)/*.c
+
+#objects
 OBJS = $(SRCS:.c=.o)
-HEADER = push_swap.h
 
-%.o : %.c $(HEADER)
+#library
+HEADER = includes/push_swap.h
+
+#libft
+LIBFT = libft/libft.a
+
+%.o : %.c $(LIBFT) Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
-all: $(NAME)
+obj:
+	@mkdir $(OBJS_DIR)
+	$(OBJS_DIR)%.o : $(SRCS_DIR)%.c $(HEADER)
+	$(CC) $(FLAGS) -c $< -o $@
+
+all: obj $(NAME)
+	 all -C libft
 
 $(NAME) : $(OBJS) $(HEADERS)
 	ar -rsc $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS)
+	rm -Rf $(OBJS_DIR)
+	clean -C libft
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(LIBFT)
 
 re: fclean all
 
