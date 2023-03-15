@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 16:39:42 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:09:21 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,22 @@ t_piece	*get_list(int *data, int *game_nums, int len)
 	int	i;
 	t_piece *first;
 	t_piece	*aux;
+	t_piece	*prev;
 
 	if (!game_nums)
 		return (NULL);
 	first = new_node();
 	aux = first;
+	prev = NULL;
 	i = 0;
 	while (i < len)
 	{
 		aux->game_num = game_nums[i];
 		aux->num = data[i];
+		aux->previous = prev;
 		if (i < len - 1)
 		{
+			prev = aux;
 			aux->next = new_node();
 			aux = aux->next;
 		}

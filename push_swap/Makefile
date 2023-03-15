@@ -6,7 +6,7 @@
 #    By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 17:17:08 by mnoguera          #+#    #+#              #
-#    Updated: 2022/12/16 17:55:08 by mnoguera         ###   ########.fr        #
+#    Updated: 2023/03/15 14:12:36 by mnoguera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,19 +15,17 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
 #directories
-SRCS_DIR = ./srcs
-INCL_DIR = ./includes
 OBJS_DIR = ./objs
 LIBFT_DIR = ./libft
 
 #source files
-SRCS = $(SRCS_DIR)/*.c
+SRCS = *.c
 
 #objects
 OBJS = $(SRCS:.c=.o)
 
 #library
-HEADER = includes/push_swap.h
+HEADER = push_swap.h
 
 #libft
 LIBFT = libft/libft.a
@@ -37,7 +35,7 @@ LIBFT = libft/libft.a
 
 obj:
 	@mkdir $(OBJS_DIR)
-	$(OBJS_DIR)%.o : $(SRCS_DIR)%.c $(HEADER)
+	$(OBJS_DIR)%.o : %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
 all: obj $(NAME)

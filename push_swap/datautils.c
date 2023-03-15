@@ -1,4 +1,16 @@
-#include "../includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   datautils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/15 12:58:26 by mnoguera          #+#    #+#             */
+/*   Updated: 2023/03/15 14:09:32 by mnoguera         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 /*conta quants nombres hi ha en cas que l'inpot el posn com a string*/
 

@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/02 15:10:41 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:43:03 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define PUSH_SWAP_H
 # include <unistd.h>
 # include <stdlib.h>
+# include "libft/libft.h"
 
 typedef struct s_piece
 {
 	int				num;
 	int				game_num;
+	struct s_piece	*previous;
 	struct s_piece	*next;
 }					t_piece;
 
@@ -31,7 +33,7 @@ typedef struct s_stack
 /*getdata.c*/
 t_piece	*getinput(int argc, char **argv);
 t_piece	*getdata(int len, char **str);
-int		*game_numbers(int *data, int len)
+int		*game_numbers(int *data, int len);
 t_piece	*get_list(int *data, int *game_nums, int len);
 int		game_number(int num, int *data, int len);
 
@@ -50,8 +52,10 @@ int		stack_len(t_piece *piece);
 
 /*instructions.c*/
 void	swap(t_stack *stack, char *name);
+void	push(t_stack *one, t_stack *two, char *name);
 void	rotate(t_stack *stack, char *name);
 void	rev_rotate(t_stack *stack, char *name);
+void	doubles(t_stack *stackA, t_stack *stackB, char *name, void (*instruction)(t_stack *, char *));
 
 //a esborrar (main.c)
 void print_pieces(t_stack *stackA);

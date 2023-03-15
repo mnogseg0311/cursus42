@@ -6,13 +6,12 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:29:05 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/02/16 19:17:29 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:44:24 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//sa o sb _____ al write posar  la llargada
 void	swap(t_stack *stack, char *name)
 {
 	t_piece	*aux;
@@ -21,10 +20,23 @@ void	swap(t_stack *stack, char *name)
 	stack->first->next = aux->next;
 	aux->next = stack->first;
 	stack->first = aux;
-	write(1, name, 5);
+	write(1, name, ft_strlen(name));
 }
 
-void rotate(t_stack *stack, char *name)
+void	push(t_stack *one, t_stack *two, char *name)
+{
+	t_piece	*aux;
+
+	if (!two)
+		return ;
+	aux = two->first;
+	two->first = aux->next;
+	aux->next = one->first;
+	one->first = aux;
+	write(1, name, ft_strlen(name));
+}
+
+void	rotate(t_stack *stack, char *name)
 {
 	t_piece	*aux;
 
@@ -33,16 +45,26 @@ void rotate(t_stack *stack, char *name)
 	aux = stack->first->next;
 	stack->first->next = NULL;
 	stack->first = aux;
-	write(1, name, 5);
+	write(1, name, ft_strlen(name));
 }
 
-void rev_rotate(t_stack *stack, char *name)
+void	rev_rotate(t_stack *stack, char *name)
 {
 	t_piece	*aux;
 
 	aux = last_piece(stack->first);
 	aux->next = stack->first;
 	stack->first = aux;
-	//falta que l'anterior a l'aux apunti a NULL
-	write(1, name, 5);
+	aux = aux->previous;
+	aux->next = NULL;
+	write(1, name, ft_strlen(name));
+}
+
+/*instruction es una de les funcions anteriors, name ss\n, rr\n o rrr\n*/
+
+void	doubles(t_stack *stackA, t_stack *stackB, char *name, void (*instruction)(t_stack *, char *))
+{
+	instruction(stackA, "");
+	instruction(stackB, "");
+	write(1, name, ft_strlen(name));
 }

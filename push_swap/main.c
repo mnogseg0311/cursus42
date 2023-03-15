@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/14 17:22:50 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:44:29 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ void	print_pieces(t_stack *stackA)
 int	main(int argc, char **argv)
 {
 	t_stack	*stackA;
+	t_stack	*stackB;
 
 	if (argc == 1)
 		return (1);
-	stackA = malloc(sizeof(stackA));
+	stackA = malloc(sizeof(t_stack *));
 	stackA->first = getinput(argc, argv);
 	if (stackA->first == NULL)
 	{
@@ -46,8 +47,11 @@ int	main(int argc, char **argv)
 	}
 	stackA->len = stack_len(stackA->first);
 	
+
+	stackB = malloc(sizeof(t_stack *));
+	stackB->first = getinput(argc, argv);
+	doubles(stackA, stackB, "ss\n", &swap);
 	print_pieces(stackA);
-	rev_rotate(stackA, "holii");
-	print_pieces(stackA);
+	print_pieces(stackB);
 	return (0);
 }
