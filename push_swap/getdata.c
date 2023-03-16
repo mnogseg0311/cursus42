@@ -6,12 +6,11 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:03:59 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/15 14:09:21 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:32:49 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 /*recorre l’array amb dos auxiliars, un conta quants n’hi ha de més petits i 
 l‘altre quants n’hi ha de més grans, retorna el game_num ó -1 si està repetit*/
@@ -49,7 +48,7 @@ t_piece	*get_list(int *data, int *game_nums, int len)
 
 	if (!game_nums)
 		return (NULL);
-	first = new_node();
+	first = new_piece();
 	aux = first;
 	prev = NULL;
 	i = 0;
@@ -61,7 +60,7 @@ t_piece	*get_list(int *data, int *game_nums, int len)
 		if (i < len - 1)
 		{
 			prev = aux;
-			aux->next = new_node();
+			aux->next = new_piece();
 			aux = aux->next;
 		}
 		i++;

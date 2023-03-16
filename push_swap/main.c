@@ -6,13 +6,14 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/15 15:44:29 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:54:07 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
+/*imprieix les peces d'un stack, s'ha d'esborrar*/
+
 void	print_pieces(t_stack *stackA)
 {
 	printf("\nPrint pieces:\n");
@@ -46,12 +47,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	stackA->len = stack_len(stackA->first);
-	
-
 	stackB = malloc(sizeof(t_stack *));
-	stackB->first = getinput(argc, argv);
-	doubles(stackA, stackB, "ss\n", &swap);
-	print_pieces(stackA);
-	print_pieces(stackB);
+		
 	return (0);
 }

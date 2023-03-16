@@ -6,13 +6,15 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:05:23 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/15 14:53:54 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:29:56 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_piece	*new_node(void)
+/*crea una nova peça i inicialitza tots els seus elements a 0*/
+
+t_piece	*new_piece(void)
 {
 	t_piece	*new;
 
@@ -23,6 +25,8 @@ t_piece	*new_node(void)
 	return (new);
 }
 
+/*retorna l'ultima peça de l'stack*/
+
 t_piece	*last_piece(t_piece *pce)
 {
 	if (pce == NULL)
@@ -31,6 +35,8 @@ t_piece	*last_piece(t_piece *pce)
 		pce = pce->next;
 	return (pce);
 }
+
+/*afegeix una peça al final de l'stack*/
 
 void	add_piece_back(t_piece **pce, t_piece *new)
 {
@@ -48,11 +54,15 @@ void	add_piece_back(t_piece **pce, t_piece *new)
 	}
 }
 
+/*afegeix una peça a l'inici de l'stack*/
+
 void	add_piece_front(t_piece **pce, t_piece *new)
 {
 	new->next = *pce;
 	*pce = new;
 }
+
+/*calcula la llargada d'un stack*/
 
 int	stack_len(t_piece *piece)
 {

@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/15 15:43:03 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:30:29 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+
+# include <stdio.h>
 
 typedef struct s_piece
 {
@@ -44,7 +46,7 @@ char	*trim_zeros(char *num);
 int		check_limit(char *num, int len);
 
 /*pieces.c*/
-t_piece	*new_node(void);
+t_piece	*new_piece(void);
 t_piece	*last_piece(t_piece *pce);
 void	add_piece_back(t_piece **pce, t_piece *new);
 void	add_piece_front(t_piece **pce, t_piece *new);
