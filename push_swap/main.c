@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:30:35 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/16 18:54:07 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:45:56 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,17 @@ int	main(int argc, char **argv)
 	stackA->first = getinput(argc, argv);
 	if (stackA->first == NULL)
 	{
+		free(stackA);
 		write(2, "Error\n", 6);
 		return (0);
 	}
 	stackA->len = stack_len(stackA->first);
 	stackB = malloc(sizeof(t_stack *));
-		
+	push_swap(stackA, stackB);
+	
+	print_pieces(stackA);
+
+	free(stackA);
+	free(stackB);
 	return (0);
 }

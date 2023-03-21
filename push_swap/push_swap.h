@@ -6,7 +6,7 @@
 /*   By: mnoguera <mnoguera@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:55:29 by mnoguera          #+#    #+#             */
-/*   Updated: 2023/03/16 19:30:29 by mnoguera         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:17:01 by mnoguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ void	push(t_stack *one, t_stack *two, char *name);
 void	rotate(t_stack *stack, char *name);
 void	rev_rotate(t_stack *stack, char *name);
 void	doubles(t_stack *stackA, t_stack *stackB, char *name, void (*instruction)(t_stack *, char *));
+
+/*sorting.c*/
+void	push_swap(t_stack *stackA, t_stack *stackB);
+void	sort_two(t_stack *stackA);
 
 //a esborrar (main.c)
 void print_pieces(t_stack *stackA);
