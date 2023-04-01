@@ -22,7 +22,7 @@ typedef struct s_piece
 {
 	int				num;
 	int				game_num;
-	struct s_piece	*previous;
+	struct s_piece	*prev;
 	struct s_piece	*next;
 }					t_piece;
 

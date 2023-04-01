@@ -21,11 +21,14 @@ void	swap(t_stack *stack, char *name)
 	aux = stack->first->next;
 	stack->first->next = aux->next;
 	aux->next = stack->first;
+	aux->next->prev = stack->first;
+	stack->first->prev = aux;
+	aux->prev = NULL;
 	stack->first = aux;
 	write(1, name, ft_strlen(name));
 }
 
-/*posa el primer element de l'stack two al principi de l'stack a*/
+/*posa el primer element de l'stack two al principi de l'stack one*/
 
 void	push(t_stack *one, t_stack *two, char *name)
 {
@@ -35,7 +38,10 @@ void	push(t_stack *one, t_stack *two, char *name)
 		return ;
 	aux = two->first;
 	two->first = aux->next;
+	two->first->prev = NULL;
 	aux->next = one->first;
+	one->first->prev = aux;
+	aux->prev = NULL;
 	one->first = aux;
 	write(1, name, ft_strlen(name));
 }
@@ -48,8 +54,10 @@ void	rotate(t_stack *stack, char *name)
 
 	aux = last_piece(stack->first);
 	aux->next = stack->first;
+	stack->first->prev = aux;
 	aux = stack->first->next;
 	stack->first->next = NULL;
+	aux->prev = NULL;
 	stack->first = aux;
 	write(1, name, ft_strlen(name));
 }
@@ -63,7 +71,8 @@ void	rev_rotate(t_stack *stack, char *name)
 	aux = last_piece(stack->first);
 	aux->next = stack->first;
 	stack->first = aux;
-	aux = aux->previous;
+	stack->first->prev = NULL;
+	aux = aux->prev;
 	aux->next = NULL;
 	write(1, name, ft_strlen(name));
 }

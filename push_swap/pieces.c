@@ -21,6 +21,7 @@ t_piece	*new_piece(void)
 	new = malloc(sizeof(t_piece));
 	new->num = 0;
 	new->game_num = 0;
+	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }
@@ -51,6 +52,7 @@ void	add_piece_back(t_piece **pce, t_piece *new)
 		}
 		aux = last_piece(*pce);
 		aux->next = new;
+		new->prev = aux;
 	}
 }
 
@@ -59,6 +61,7 @@ void	add_piece_back(t_piece **pce, t_piece *new)
 void	add_piece_front(t_piece **pce, t_piece *new)
 {
 	new->next = *pce;
+	*pce->prev = new;
 	*pce = new;
 }
 

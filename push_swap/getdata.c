@@ -44,22 +44,22 @@ t_piece	*get_list(int *data, int *game_nums, int len)
 	int	i;
 	t_piece *first;
 	t_piece	*aux;
-	t_piece	*prev;
+	t_piece	*previous;
 
 	if (!game_nums)
 		return (NULL);
 	first = new_piece();
 	aux = first;
-	prev = NULL;
+	previous = NULL;
 	i = 0;
 	while (i < len)
 	{
 		aux->game_num = game_nums[i];
 		aux->num = data[i];
-		aux->previous = prev;
+		aux->prev = previous;
 		if (i < len - 1)
 		{
-			prev = aux;
+			previous = aux;
 			aux->next = new_piece();
 			aux = aux->next;
 		}

@@ -32,6 +32,13 @@ void	print_pieces(t_stack *stackA)
 	}
 }
 
+static int print_error(t_stack	*stack)
+{
+	free(stack);
+	write(2, "Error\n", 6);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stackA;
@@ -40,15 +47,18 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	stackA = malloc(sizeof(t_stack *));
-	stackA->first = getinput(argc, argv);
-	if (stackA->first == NULL)
+	if (!stackA)
 	{
-		free(stackA);
 		write(2, "Error\n", 6);
 		return (0);
 	}
+	stackA->first = getinput(argc, argv);
+	if (stackA->first == NULL)
+		return (print_error(stackA));
 	stackA->len = stack_len(stackA->first);
 	stackB = malloc(sizeof(t_stack *));
+	if (stackB == NULL)
+		return (print_error(stackA));
 	push_swap(stackA, stackB);
 	
 	print_pieces(stackA);
