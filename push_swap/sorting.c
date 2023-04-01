@@ -49,6 +49,5 @@ void	push_swap(t_stack *stackA, t_stack *stackB)
 		sort_two(stackA);
 	if (stackA->len == 3)
 		sort_three(stackA);
-	if (stackB == stackA)
-		printf("ignorar aquest missatge.\n");
-}
+	else
+		sort_more(stackA, stackB);
