@@ -45,9 +45,12 @@ void	sort_three(t_stack *stack)
 
 void	push_swap(t_stack *stackA, t_stack *stackB)
 {
+	if (stackA->len == 1)
+		return ;
 	if (stackA->len == 2)
 		sort_two(stackA);
-	if (stackA->len == 3)
+	else if (stackA->len == 3)
 		sort_three(stackA);
-	else
+	else if (stackA->len > 3)
 		sort_more(stackA, stackB);
+}

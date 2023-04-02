@@ -49,7 +49,6 @@ int		check_limit(char *num, int len);
 t_piece	*new_piece(void);
 t_piece	*last_piece(t_piece *pce);
 void	add_piece_back(t_piece **pce, t_piece *new);
-void	add_piece_front(t_piece **pce, t_piece *new);
 int		stack_len(t_piece *piece);
 
 /*instructions.c*/
@@ -62,6 +61,14 @@ void	doubles(t_stack *stackA, t_stack *stackB, char *name, void (*instruction)(t
 /*sorting.c*/
 void	push_swap(t_stack *stackA, t_stack *stackB);
 void	sort_two(t_stack *stackA);
+void	sort_three(t_stack *stack);
+
+/*sorting_big.c*/
+void	sort_more(t_stack *stackA, t_stack *stackB);
+
+/*sortingutils.c*/
+int	check_if_sorted(t_stack *stack);
+int	max_game_num(t_stack *stack);
 
 //a esborrar (main.c)
 void print_pieces(t_stack *stackA);

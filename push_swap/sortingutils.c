@@ -2,13 +2,13 @@
 
 /*comprova si està ordenada des del final, si les peces que hi ha són les últimes ordenades, retorna 1 si sí i 0 si no*/
 
-int	check_if_sorted(t_piece *stack)
+int	check_if_sorted(t_stack *stack)
 {
-	t_piece	piece;
+	t_piece	*piece;
 	int		expected;
 
-	piece = last_piece(stack);
-	len = stack->len - 1;
+	piece = last_piece(stack->first);
+	expected = stack->len - 1;
 	while (piece->prev != NULL)
 	{
 		if (piece->game_num != expected)
@@ -22,7 +22,7 @@ int	check_if_sorted(t_piece *stack)
 int	max_game_num(t_stack *stack)
 {
 	int	max;
-	t_piece	piece;
+	t_piece	*piece;
 
 	piece = stack->first;
 	max = 0;

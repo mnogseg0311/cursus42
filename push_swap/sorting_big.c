@@ -6,23 +6,25 @@ void	push_back(t_stack *stackA, t_stack *stackB)
 {
 	int	max;
 	int	wrong;
-	t_piece	piece;
+	t_piece	*piece;
 
 	max = max_game_num(stackB);
 	wrong = 0;
-	piece = stackB->first_piece;
+	piece = stackB->first;
 	while (max >= 0)
 	{
-		while (piece->game_num != max)
+		while (piece->game_num != max && piece->next->game_num != max)
 		{
 			piece = piece->next;
-			rotate(stackB, "rb");
+			rotate(stackB, "rb\n");
 			wrong++;
 		}
-		push(stackA, stackB, "pa");		//pb??
+		if (piece->game_num != max)
+			swap(stackB, "sb\n");			//sb??
+		push(stackA, stackB, "pa\n");		//pb??
 		while (wrong > 0)
 		{
-			rev_rotate(stackB, "rrb");
+			rev_rotate(stackB, "rrb\n");
 			wrong--;
 		}
 		max--;
@@ -32,7 +34,7 @@ void	push_back(t_stack *stackA, t_stack *stackB)
 void	push_chunks(t_stack *stackA, t_stack *stackB, int i)
 {
 	int	j;
-	t_piece	piece;
+	t_piece	*piece;
 
 	j = i;
 	piece = stackA->first;
@@ -40,7 +42,7 @@ void	push_chunks(t_stack *stackA, t_stack *stackB, int i)
 	{
 		while (piece->game_num != j)
 			piece = piece->next;
-		push(stackB, stackA, "pb");		//pb?
+		push(stackB, stackA, "pb\n");		//pb?
 	}
 }
 

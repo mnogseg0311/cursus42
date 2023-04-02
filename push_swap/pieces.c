@@ -57,13 +57,13 @@ void	add_piece_back(t_piece **pce, t_piece *new)
 }
 
 /*afegeix una peça a l'inici de l'stack*/
-
+/*
 void	add_piece_front(t_piece **pce, t_piece *new)
 {
 	new->next = *pce;
 	*pce->prev = new;
 	*pce = new;
-}
+}*/
 
 /*calcula la llargada d'un stack*/
 

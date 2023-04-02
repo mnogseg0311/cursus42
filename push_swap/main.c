@@ -17,17 +17,21 @@
 void	print_pieces(t_stack *stackA)
 {
 	printf("\nPrint pieces:\n");
-
 	t_piece	*piece;
 
 	if (stackA->first == NULL)
 		printf("stackA->first == NULL\n");
-	
+
 	piece = stackA->first;
-	
+
 	while (piece != NULL)
 	{
-		printf("num=%d\ngame_num=%d\n\n", piece->num, piece->game_num);
+		printf("num=%d\ngame_num=%d", piece->num, piece->game_num);
+		if (piece->prev)
+			printf("\nprev's num=%d", piece->prev->num);
+		else
+			printf("\n!piece->prev");
+		printf("\n\n");
 		piece = piece->next;
 	}
 }
@@ -60,7 +64,7 @@ int	main(int argc, char **argv)
 	if (stackB == NULL)
 		return (print_error(stackA));
 	push_swap(stackA, stackB);
-	
+
 	print_pieces(stackA);
 
 	free(stackA);

@@ -20,8 +20,9 @@ void	swap(t_stack *stack, char *name)
 
 	aux = stack->first->next;
 	stack->first->next = aux->next;
+	if (aux->next)
+		aux->next->prev = stack->first;
 	aux->next = stack->first;
-	aux->next->prev = stack->first;
 	stack->first->prev = aux;
 	aux->prev = NULL;
 	stack->first = aux;
@@ -70,10 +71,10 @@ void	rev_rotate(t_stack *stack, char *name)
 
 	aux = last_piece(stack->first);
 	aux->next = stack->first;
+	stack->first->prev = aux;
+	aux->prev->next = NULL;
+	aux->prev = NULL;
 	stack->first = aux;
-	stack->first->prev = NULL;
-	aux = aux->prev;
-	aux->next = NULL;
 	write(1, name, ft_strlen(name));
 }
 
