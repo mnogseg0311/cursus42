@@ -6,7 +6,7 @@ int	check_if_sorted(t_stack *stack)
 {
 	t_piece	*piece;
 	int		expected;
-
+	
 	piece = last_piece(stack->first);
 	expected = stack->len - 1;
 	while (piece->prev != NULL)
@@ -16,6 +16,7 @@ int	check_if_sorted(t_stack *stack)
 		expected--;
 		piece = piece->prev;
 	}
+	printf("boneees\n");
 	return (1);
 }
 

@@ -38,9 +38,6 @@ void	sort_three(t_stack *stack)
 	}
 }
 
-//quan l'input es "2 1 0", l'ordena correctament, pero en imprimir l'stack
-//nomes s'imprimeixen les dos primeres peces, l'altra s'ha perdut???
-
 /*separa els primers casos del general*/
 
 void	push_swap(t_stack *stackA, t_stack *stackB)
