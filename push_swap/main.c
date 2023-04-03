@@ -36,9 +36,14 @@ void	print_pieces(t_stack *stackA)
 	}
 }
 
-static int print_error(t_stack	*stack)
+/*s'hauria d'alliberar peça per peça, no?*/
+
+static int print_error(t_stack	*stackA, t_stack *stackB)
 {
-	free(stack);
+	if (stackA)
+		free(stackA);
+	if (stackB)
+		free(stackB);
 	write(2, "Error\n", 6);
 	return (0);
 }
@@ -52,17 +57,18 @@ int	main(int argc, char **argv)
 		return (1);
 	stackA = malloc(sizeof(t_stack *));
 	if (!stackA)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
+		return (print_error(stackA, stackB));
 	stackA->first = getinput(argc, argv);
-	if (stackA->first == NULL)
-		return (print_error(stackA));
+	if (!stackA->first)
+		return (print_error(stackA, stackB));
 	stackA->len = stack_len(stackA->first);
 	stackB = malloc(sizeof(t_stack *));
-	if (stackB == NULL)
-		return (print_error(stackA));
+	if (!stackB)
+		return (print_error(stackA, stackB));
+	stackB->first = new_piece();
+	if (!stackA->first)
+		return (print_error(stackA, stackB));
+	stackB->first->game_num = 42;
 	push_swap(stackA, stackB);
 
 	print_pieces(stackA);

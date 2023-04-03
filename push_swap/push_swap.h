@@ -69,6 +69,7 @@ void	sort_more(t_stack *stackA, t_stack *stackB);
 /*sortingutils.c*/
 int	check_if_sorted(t_stack *stack);
 int	max_game_num(t_stack *stack);
+int	in_the_bottom(t_stack *stack, int max, int wrong);
 
 //a esborrar (main.c)
 void print_pieces(t_stack *stackA);
